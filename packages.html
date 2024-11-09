@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Packages - Kalpavriksha Education Foundation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .featured-program {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .program-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #48825d;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .program-title {
+            color: #48825d;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-price {
+            font-size: 2rem;
+            color: #48825d;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-price span {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .program-features {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .program-features li {
+            margin: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #333;
+        }
+
+        .program-features i {
+            color: #48825d;
+        }
+
+        .enroll-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #48825d;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .enroll-button:hover {
+            background: #3a6b4a;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Kalpavriksha Logo" />
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="consultation.html">Consultation</a></li>
+                <li><a href="packages.html" class="active">Packages</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="payment.html">Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Educational Packages</h1>
+            <p>Comprehensive training and consultation packages for educators and institutions</p>
+        </div>
+    </section>
+
+    <!-- Featured Program - Compact & Centered -->
+    <section class="featured-program">
+        <div class="program-badge">Featured Program</div>
+        <h2 class="program-title">English Phonics Training Program</h2>
+        <div class="program-price">
+            Rs. 3,000 <span>/program</span>
+        </div>
+        <ul class="program-features">
+            <li><i class="fas fa-check"></i> 7 Days Virtual Session</li>
+            <li><i class="fas fa-check"></i> Basic Phonics (6 days)</li>
+            <li><i class="fas fa-check"></i> 42 sounds with fun activities</li>
+            <li><i class="fas fa-check"></i> Curriculum Guidelines</li>
+            <li><i class="fas fa-check"></i> Certificate Upon Completion</li>
+        </ul>
+        <a href="contact.html" class="enroll-button">Enroll Now</a>
+    </section>
+    <!-- Training Packages -->
+    <section class="packages-section" id="training-packages">
+        <div class="container">
+            <h2 class="section-title">Training Packages</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Basic Training Package</h3>
+                    </div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Montessori Training Basic</li>
+                        <li><i class="fas fa-check"></i> Basic teaching resources</li>
+                        <li><i class="fas fa-check"></i> Email support</li>
+                        <li><i class="fas fa-check"></i> Basic assessment tools</li>
+                        <li><i class="fas fa-check"></i> Certification</li>
+                    </ul>
+                    <a href="contact.html" class="package-button">Get Details</a>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Professional Training Package</h3>
+                    </div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Advanced Montessori Training</li>
+                        <li><i class="fas fa-check"></i> English Phonics Program</li>
+                        <li><i class="fas fa-check"></i> Comprehensive resources</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Advanced assessment tools</li>
+                    </ul>
+                    <a href="contact.html" class="package-button">Get Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Packages -->
+    <section class="packages-section" id="consultation-packages">
+        <div class="container">
+            <h2 class="section-title">Consultation Packages</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Basic Consultation</h3>
+                    </div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Initial assessment</li>
+                        <li><i class="fas fa-check"></i> Basic curriculum guidance</li>
+                        <li><i class="fas fa-check"></i> Teaching methodology support</li>
+                        <li><i class="fas fa-check"></i> Email consultation</li>
+                    </ul>
+                    <a href="contact.html" class="package-button">Get Details</a>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Comprehensive Consultation</h3>
+                    </div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Detailed institutional assessment</li>
+                        <li><i class="fas fa-check"></i> Complete curriculum development</li>
+                        <li><i class="fas fa-check"></i> Staff training programs</li>
+                        <li><i class="fas fa-check"></i> Regular progress monitoring</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                    </ul>
+                    <a href="contact.html" class="package-button">Get Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        <span>+977 9857876262 | 9840056656</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="packages.html">Our Packages</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
