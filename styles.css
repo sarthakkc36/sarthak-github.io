@@ -2621,3 +2621,126 @@ header.scrolled {
       width: 180px;
   }
 }
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--white);
+  position: relative;
+}
+
+.logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 60px;
+  width: auto;
+}
+
+nav {
+  margin-left: auto; /* This pushes the nav to the right */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-dark);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  .mobile-menu-button {
+      display: block;
+      z-index: 1001;
+  }
+
+  nav {
+      margin-left: 0;
+  }
+
+  .nav-links {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--white);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+  }
+
+  .nav-links.active {
+      display: flex;
+  }
+
+  .nav-links a {
+      font-size: 1.2rem;
+  }
+
+  /* Hamburger Icon */
+  .mobile-menu-button {
+      width: 30px;
+      height: 20px;
+      position: relative;
+  }
+
+  .mobile-menu-button span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: var(--primary);
+      transition: 0.3s;
+  }
+
+  .mobile-menu-button span:nth-child(1) { top: 0; }
+  .mobile-menu-button span:nth-child(2) { top: 8px; }
+  .mobile-menu-button span:nth-child(3) { top: 16px; }
+
+  /* Hamburger Animation */
+  .mobile-menu-button.active span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 8px;
+  }
+
+  .mobile-menu-button.active span:nth-child(2) {
+      opacity: 0;
+  }
+
+  .mobile-menu-button.active span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 8px;
+  }
+}
