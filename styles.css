@@ -2744,3 +2744,147 @@ nav {
       top: 8px;
   }
 }
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--background);  /* Using the original background color */
+  position: fixed;  /* Make header stick to top */
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 60px;
+  width: auto;
+}
+
+nav {
+  margin-left: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-dark);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  header {
+      padding: 1rem;
+  }
+
+  .mobile-menu-button {
+      display: block;
+      z-index: 1001;
+  }
+
+  nav {
+      margin-left: 0;
+  }
+
+  .nav-links {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;  /* Start from off-screen */
+      width: 70%;
+      height: 100vh;
+      background-color: var(--background);
+      flex-direction: column;
+      padding: 80px 2rem 2rem;
+      transition: right 0.3s ease;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+      display: flex;
+      right: 0;  /* Slide in from right */
+  }
+
+  .nav-links li {
+      width: 100%;
+      text-align: left;
+  }
+
+  .nav-links a {
+      display: block;
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      border-bottom: 1px solid var(--secondary);
+  }
+
+  /* Hamburger Icon */
+  .mobile-menu-button span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background-color: var(--primary);
+      margin: 5px 0;
+      transition: all 0.3s ease;
+  }
+
+  /* Hamburger Animation */
+  .mobile-menu-button.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .mobile-menu-button.active span:nth-child(2) {
+      opacity: 0;
+  }
+
+  .mobile-menu-button.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  /* Overlay when menu is open */
+  .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+  }
+
+  .menu-overlay.active {
+      display: block;
+  }
+}
