@@ -537,7 +537,7 @@ header.scrolled {
 }
 .testimonial-avatar-index {
   width: auto;
-  height: 120px;
+  height: auto;
   border-radius: 50%;
   margin: 0 auto 1.5rem;
 }
