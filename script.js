@@ -900,3 +900,57 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// Mobile Navigation
+document.addEventListener('DOMContentLoaded', function() {
+    // Get current page URL
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Set active class for both mobile and desktop navigation
+    const allNavLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
+    allNavLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    });
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuOverlay = document.querySelector('.menu-overlay');
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('active');
+        mobileMenuButton.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    // Toggle menu when button is clicked
+    mobileMenuButton?.addEventListener('click', toggleMenu);
+
+    // Close menu when overlay is clicked
+    menuOverlay?.addEventListener('click', toggleMenu);
+
+    // Close menu when a link is clicked
+    const mobileMenuLinks = mobileMenu?.querySelectorAll('a');
+    mobileMenuLinks?.forEach(link => {
+        link.addEventListener('click', toggleMenu);
+    });
+
+    // Close menu when screen is resized to desktop size
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileMenu?.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+
+    // Header scroll effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header?.classList.add('scrolled');
+        } else {
+            header?.classList.remove('scrolled');
+        }
+    });
+});

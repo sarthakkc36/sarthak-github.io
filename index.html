@@ -6,21 +6,125 @@
     <title>Kalpavriksha Education Foundation - Empowering Educators Since 2016</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add these new styles for mobile navigation -->
+    <style>
+        /* Mobile Menu Button */
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .mobile-menu-button .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100vh;
+            background-color: var(--white);
+            padding: 2rem;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu ul li {
+            margin: 1rem 0;
+        }
+
+        .mobile-menu a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        /* Mobile Menu Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            display: block;
+        }
+
+        /* Show mobile menu button on mobile devices */
+        @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            /* Animate menu button when active */
+            .mobile-menu-button.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .mobile-menu-button.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-button.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header remains the same -->
+    <!-- Updated Header with Mobile Navigation -->
     <header>
         <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="Kalpavriksha Logo">
+            <img src="images/logo.png" alt="Kalpavriksha Logo" />
         </a>
-        <button class="mobile-menu-button">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav>
+        
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="consultation.html">Consultation</a></li>
                 <li><a href="packages.html">Packages</a></li>
                 <li><a href="training.html">Training</a></li>
@@ -29,156 +133,79 @@
                 <li><a href="payment.html">Payment</a></li>
             </ul>
         </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="consultation.html">Consultation</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="payment.html">Payment</a></li>
+            </ul>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
         <div class="menu-overlay"></div>
     </header>
 
-    <!-- Updated Hero Section -->
-    <section id="hero">
-        <div class="hero-content">
-            <h1>Transform Education with Kalpavriksha</h1>
-            <p>Established in 2016, we are dedicated to providing child-centered and developmentally appropriate international quality education for all children.</p>
-            <div class="hero-buttons">
-                <a href="#get-started" class="cta-button">Get Started</a>
-                <a href="#learn-more" class="secondary-button">Learn More</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="/api/placeholder/600/400" alt="Education Illustration" />
-        </div>
-    </section>
+    <!-- Rest of your existing content -->
+    <!-- ... -->
 
-    <!-- Updated Features Section -->
-    <section id="features" class="features-section">
-        <h2 class="section-title">Our Mission & Vision</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <h3>Our Mission</h3>
-                <p>Providing child-centered and developmentally appropriate international quality education for all children of pre-primary and primary level.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <h3>Our Vision</h3>
-                <p>Supporting school administration to give importance on early years of children which is the foundation of their life.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-bullseye"></i>
-                </div>
-                <h3>Our Goal</h3>
-                <p>Equipping teachers and institutions with knowledge and skills to implement play-based activities and project-based teaching and learning.</p>
-            </div>
-        </div>
-    </section>
+    <!-- Add this script before closing body tag -->
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const menuOverlay = document.querySelector('.menu-overlay');
 
-    <!-- New Services Section -->
-    <section id="services" class="methodology-section">
-        <div class="methodology-content">
-            <h2>Our Services</h2>
-            <div class="methodology-steps">
-                <div class="step">
-                    <span class="step-number">01</span>
-                    <h3>Curriculum Consultation</h3>
-                    <p>Specialized guidance for pre and primary level education</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">02</span>
-                    <h3>Teacher Training</h3>
-                    <p>Comprehensive training including Montessori and phonetic methods</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">03</span>
-                    <h3>Workshops & Seminars</h3>
-                    <p>For teachers, parents, coordinators, and school administration</p>
-                </div>
-                <div class="step">
-                    <span class="step-number">04</span>
-                    <h3>Special Programs</h3>
-                    <p>Including art of parenting and motivational training</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            function toggleMenu() {
+                mobileMenu.classList.toggle('active');
+                mobileMenuButton.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                // Prevent body scrolling when menu is open
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            }
 
-    <!-- About the Director -->
-    <section class="testimonials-section">
-        <h2 class="section-title">Meet Our Director</h2>
-        <div class="testimonial-slider">
-            <div class="testimonial-slide active">
-                <div class="testimonial-content">
-                    <img src="/api/placeholder/120/120" alt="Pratiksha Gautam" class="testimonial-avatar" />
-                    <h3>Pratiksha Gautam</h3>
-                    <p class="testimonial-position">Educator | Consultant | Director</p>
-                    <p class="testimonial-text">With an MA in Child Development (TU) and MEd from the University of Applied Research and Development, New Zealand, Pratiksha has been transforming education for over 9 years. She serves as the President of Kiwanis Club, Dang, focusing on aiding underprivileged children.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            // Toggle menu when button is clicked
+            mobileMenuButton.addEventListener('click', toggleMenu);
 
-    <!-- Updated CTA Section -->
-    <section id="get-started" class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Transform Your Teaching?</h2>
-            <p>Join Kalpavriksha today and become part of our growing community of innovative educators.</p>
-            <a href="contact.html" class="cta-button">Contact Us Today</a>
-        </div>
-    </section>
+            // Close menu when overlay is clicked
+            menuOverlay.addEventListener('click', toggleMenu);
 
-    <!-- Footer remains largely the same but with updated contact info -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <div class="contact-info">
-                    <p>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
-                    </p>
-                    <p>
-                        <i class="fas fa-phone"></i>
-                        <span>+977 9857876262 | 9840056656</span>
-                    </p>
-                </div>
-            </div>
+            // Close menu when a link is clicked
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
 
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="packages.html">Our Packages</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="faq.html">FAQs</a></li>
-                </ul>
-            </div>
+            // Close menu when screen is resized to desktop size
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
 
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
