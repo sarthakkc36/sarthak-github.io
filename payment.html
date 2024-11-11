@@ -6,6 +6,9 @@
     <title>Payment - Kalpavriksha Education Foundation</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.js"></script>
     <style>
         .payment-container {
             max-width: 800px;
@@ -167,7 +170,19 @@
             <p>Choose your preferred payment method</p>
         </div>
     </section>
-
+    <form id="esewaForm" method="POST" action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" style="display: none;">
+        <input type="text" name="amount" value="150" required>
+        <input type="text" name="tax_amount" value="0.00" required>
+        <input type="text" name="total_amount" value="150" required>
+        <input type="text" name="transaction_uuid" required>
+        <input type="text" name="product_code" value="EPAYTEST" required>
+        <input type="text" name="product_service_charge" value="0.00" required>
+        <input type="text" name="product_delivery_charge" value="0.00" required>
+        <input type="text" name="success_url" value="https://esewa.com.np" required>
+        <input type="text" name="failure_url" value="https://google.com" required>
+        <input type="text" name="signed_field_names" value="total_amount,transaction_uuid,product_code" required>
+        <input type="text" name="signature" required>
+    </form>
     <div class="payment-container">
         <!-- Payment Methods -->
         <div class="payment-methods">
@@ -275,22 +290,101 @@
     </footer>
 
     <script>
-        // This is placeholder code - you'll replace with actual implementation
+        // Generate signature using HMAC SHA-256
+        function generateSignature(data) {
+            try {
+                // Test environment secret key
+                const secretKey = '8gBm/:&EnhH.1/q';
+                
+                // Create signature string - IMPORTANT: no spaces between values
+                const signatureString = `total_amount=${data.total_amount},transaction_uuid=${data.transaction_uuid},product_code=${data.product_code}`;
+                console.log('Signature Base:', signatureString);
+
+                // Convert to WordArray
+                const keyWordArray = CryptoJS.enc.Utf8.parse(secretKey);
+                const messageWordArray = CryptoJS.enc.Utf8.parse(signatureString);
+
+                // Generate HMAC
+                const hmac = CryptoJS.HmacSHA256(messageWordArray, keyWordArray);
+                const signature = hmac.toString(CryptoJS.enc.Base64);
+                
+                console.log('Generated Signature:', signature);
+                return signature;
+            } catch (error) {
+                console.error('Signature generation error:', error);
+                throw error;
+            }
+        }
+
+        function generateUUID() {
+            const date = new Date();
+            const timestamp = Math.floor(date.getTime() / 1000);
+            const random = Math.floor(Math.random() * 100000).toString().padStart(5, '0');
+            return `241111-${random}`;
+        }
+
+        function initiateEsewaPayment() {
+            try {
+                const form = document.getElementById('esewaForm');
+                
+                // Create formData with exact values
+                const formData = {
+                    amount: "150.00",
+                    tax_amount: "0.00",
+                    total_amount: "150.00",
+                    transaction_uuid: generateUUID(),
+                    product_code: "EPAYTEST",
+                    product_service_charge: "0.00",
+                    product_delivery_charge: "0.00",
+                    success_url: window.location.origin + "/payment-success.html",
+                    failure_url: window.location.origin + "/payment-failure.html",
+                    signed_field_names: "total_amount,transaction_uuid,product_code"
+                };
+
+                // Generate and add signature
+                formData.signature = generateSignature(formData);
+
+                // Debug log
+                console.log('Complete form data:', formData);
+
+                // Set form values
+                Object.entries(formData).forEach(([key, value]) => {
+                    const input = form.querySelector(`[name="${key}"]`);
+                    if (input) {
+                        input.value = value;
+                    }
+                });
+
+                // Additional debug log
+                console.log('Form values before submit:', {
+                    total_amount: form.querySelector('[name="total_amount"]').value,
+                    transaction_uuid: form.querySelector('[name="transaction_uuid"]').value,
+                    product_code: form.querySelector('[name="product_code"]').value,
+                    signature: form.querySelector('[name="signature"]').value
+                });
+
+                // Submit form
+                form.submit();
+            } catch (error) {
+                console.error('Payment initiation error:', error);
+                alert('An error occurred while processing the payment. Please check the console for details.');
+            }
+        }
+
+        // Payment option click handler
         document.querySelectorAll('.payment-option').forEach(option => {
             option.addEventListener('click', function() {
                 const method = this.dataset.method;
                 document.getElementById('selected-method').textContent = 
                     method.charAt(0).toUpperCase() + method.slice(1);
                 
-                // Remove active class from all options
                 document.querySelectorAll('.payment-option').forEach(opt => 
                     opt.style.border = 'none');
-                
-                // Add active class to selected option
                 this.style.border = '2px solid #48825d';
             });
         });
 
+        // Proceed button click handler
         document.getElementById('proceed-payment').addEventListener('click', function() {
             const method = document.getElementById('selected-method').textContent.toLowerCase();
             if (method === 'not selected') {
@@ -298,98 +392,21 @@
                 return;
             }
 
-            // Show processing state
             const statusDiv = document.querySelector('.payment-status');
-            statusDiv.style.display = 'block';
-
-            // Here you'll integrate with your payment gateway APIs
-            // For example:
-            // if (method === 'esewa') {
-            //     initializeEsewaPayment();
-            // } else if (method === 'khalti') {
-            //     initializeKhaltiPayment();
-            // } else if (method === 'bank') {
-            //     initializeBankPayment();
-            // }
-            // Mobile Navigation Script
-            document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu functionality
-            const mobileMenuButton = document.querySelector('.mobile-menu-button');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const menuOverlay = document.querySelector('.menu-overlay');
-
-            function toggleMenu() {
-                mobileMenu.classList.toggle('active');
-                mobileMenuButton.classList.toggle('active');
-                menuOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            if (statusDiv) {
+                statusDiv.style.display = 'block';
             }
 
-            // Toggle menu when button is clicked
-            mobileMenuButton?.addEventListener('click', toggleMenu);
-
-            // Close menu when overlay is clicked
-            menuOverlay?.addEventListener('click', toggleMenu);
-
-            // Close menu when a link is clicked
-            const mobileMenuLinks = mobileMenu?.querySelectorAll('a');
-            mobileMenuLinks?.forEach(link => {
-                link.addEventListener('click', toggleMenu);
-            });
-
-            // Close menu when screen is resized to desktop size
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768 && mobileMenu?.classList.contains('active')) {
-                    toggleMenu();
+            if (method === 'esewa') {
+                initiateEsewaPayment();
+            } else {
+                alert('Payment method not yet implemented');
+                if (statusDiv) {
+                    statusDiv.style.display = 'none';
                 }
-            });
-        });
-
-        // Payment Page Specific Script
-        document.addEventListener('DOMContentLoaded', function() {
-            // Payment option selection
-            const paymentOptions = document.querySelectorAll('.payment-option');
-            const selectedMethodSpan = document.getElementById('selected-method');
-            const proceedButton = document.getElementById('proceed-payment');
-
-            paymentOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const method = this.dataset.method;
-                    
-                    // Remove active class from all options
-                    paymentOptions.forEach(opt => opt.classList.remove('active'));
-                    
-                    // Add active class to selected option
-                    this.classList.add('active');
-                    
-                    // Update selected method text
-                    selectedMethodSpan.textContent = method.charAt(0).toUpperCase() + method.slice(1);
-                });
-            });
-
-            // Handle proceed button click
-            proceedButton.addEventListener('click', function() {
-                const selectedMethod = selectedMethodSpan.textContent;
-                
-                if (selectedMethod === 'Not selected') {
-                    alert('Please select a payment method');
-                    return;
-                }
-
-                // Show processing state
-                const paymentStatus = document.querySelector('.payment-status');
-                paymentStatus.style.display = 'block';
-                
-                // Simulate payment processing
-                setTimeout(() => {
-                    // Here you would normally integrate with your payment gateway
-                    // For demonstration, we'll just show a success message
-                    alert('Payment processing initiated!');
-                    paymentStatus.style.display = 'none';
-                }, 2000);
-            });
-        });
+            }
         });
     </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
