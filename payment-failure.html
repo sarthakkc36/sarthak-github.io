@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed - Kalpavriksha Education Foundation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header (Same as other pages) -->
+    <header>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Kalpavriksha Logo" />
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="consultation.html">Consultation</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="payment.html">Payment</a></li>
+            </ul>
+        </nav>
+    
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-button" aria-label="Toggle mobile menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="consultation.html">Consultation</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="payment.html">Payment</a></li>
+            </ul>
+        </div>
+    
+        <!-- Mobile Menu Overlay -->
+        <div class="menu-overlay"></div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Payment Failed</h1>
+            <p>There was an issue with your payment</p>
+        </div>
+    </section>
+
+    <div class="payment-failure-content" style="max-width: 600px; margin: 3rem auto; padding: 2rem; text-align: center;">
+        <div style="font-size: 4rem; color: #dc3545; margin-bottom: 1rem;">
+            <i class="fas fa-times-circle"></i>
+        </div>
+        <h2 style="color: #dc3545; margin-bottom: 1rem;">Payment Failed</h2>
+        <p id="errorDetails" style="margin-bottom: 2rem;">
+            We couldn't process your payment. Please try again or contact support if the issue persists.
+        </p>
+        <div class="button-group" style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="payment.html" class="cta-button">Try Again</a>
+            <a href="contact.html" class="secondary-button">Contact Support</a>
+        </div>
+    </div>
+
+    <!-- Footer (Same as other pages) -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        <span>+977 9857876262 | 9840056656</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="packages.html">Our Packages</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="esewa-payment.js"></script>
+    <script>
+        // Parse and display error details if available
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const encodedResponse = urlParams.get('data');
+            
+            if (encodedResponse) {
+                try {
+                    const decodedResponse = JSON.parse(atob(encodedResponse));
+                    const errorDetails = document.getElementById('errorDetails');
+                    
+                    if (decodedResponse.status) {
+                        errorDetails.textContent = `Error: ${decodedResponse.status}
+                            Please try again or contact support for assistance.`;
+                    }
+                } catch (error) {
+                    console.error('Error processing payment response:', error);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
