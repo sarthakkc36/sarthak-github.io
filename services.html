@@ -8,6 +8,37 @@
     <link rel="stylesheet" href="consultation-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+<style>
+    .alert {
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 8px;
+        display: none;
+    }
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+    .alert-error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+    .form-error {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: none;
+    }
+    .button-loader {
+        margin-left: 0.5rem;
+    }
+    .submit-button:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+</style>
 <body>
     <!-- Header -->
     <header>
@@ -166,38 +197,60 @@
                         <li><i class="fas fa-check"></i>Regular Follow-up</li>
                     </ul>
                 </div>
-                <form class="consultation-form">
+                <form class="consultation-form" id="consultationForm" onsubmit="handleConsultationSubmit(event)">
+                    <!-- Success/Error Messages -->
+                    <div id="successAlert" class="alert alert-success"></div>
+                    <div id="errorAlert" class="alert alert-error"></div>
+    
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" name="name" required>
+                        <div class="form-error" id="nameError"></div>
                     </div>
+    
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" name="email" required>
+                        <div class="form-error" id="emailError"></div>
                     </div>
+    
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" required>
+                        <input type="tel" id="phone" name="phone" required>
+                        <div class="form-error" id="phoneError"></div>
                     </div>
+    
                     <div class="form-group">
                         <label for="institution">Institution Name</label>
-                        <input type="text" id="institution">
+                        <input type="text" id="institution" name="institution">
+                        <div class="form-error" id="institutionError"></div>
                     </div>
+    
                     <div class="form-group">
-                        <label for="service">Service Required</label>
-                        <select id="service" required>
-                            <option value="">Select Service</option>
-                            <option value="curriculum">Curriculum Development</option>
-                            <option value="phonics">Phonics Training</option>
-                            <option value="montessori">Montessori Program</option>
-                            <option value="management">School Management</option>
+                        <label for="consultationType">Consultation Type</label>
+                        <select id="consultationType" name="consultationType" required>
+                            <option value="">Select Consultation Type</option>
+                            <option value="curriculum">Curriculum Consultation</option>
+                            <option value="phonics">Phonics Program</option>
+                            <option value="montessori">Montessori Implementation</option>
+                            <option value="teacher-development">Teacher Development</option>
+                            <option value="administration">School Administration</option>
                         </select>
+                        <div class="form-error" id="consultationTypeError"></div>
                     </div>
+    
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="4"></textarea>
+                        <label for="message">Additional Information</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                        <div class="form-error" id="messageError"></div>
                     </div>
-                    <button type="submit" class="submit-button">Submit Request</button>
+    
+                    <button type="submit" class="submit-button">
+                        <span class="button-text">Request Consultation</span>
+                        <span class="button-loader" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </span>
+                    </button>
                 </form>
             </div>
         </div>
@@ -235,7 +288,108 @@
             <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+     async function handleConsultationSubmit(event) {
+        event.preventDefault();
+        
+        // Reset previous error messages
+        document.querySelectorAll('.form-error').forEach(el => el.style.display = 'none');
+        document.getElementById('successAlert').style.display = 'none';
+        document.getElementById('errorAlert').style.display = 'none';
 
+        // Show loading state
+        const button = event.target.querySelector('.submit-button');
+        const buttonText = button.querySelector('.button-text');
+        const buttonLoader = button.querySelector('.button-loader');
+        buttonText.style.display = 'none';
+        buttonLoader.style.display = 'inline-block';
+        button.disabled = true;
+
+        try {
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                institution: document.getElementById('institution').value,
+                consultationType: document.getElementById('consultationType').value,
+                message: document.getElementById('message').value
+            };
+
+            // Using localhost URL
+            const response = await fetch('http://localhost:5000/api/consultation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Show success message
+                const successAlert = document.getElementById('successAlert');
+                successAlert.textContent = 'Consultation request sent successfully! We will contact you soon.';
+                successAlert.style.display = 'block';
+                
+                // Scroll to success message
+                successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Clear form
+                event.target.reset();
+
+                // Optionally hide success message after some time
+                setTimeout(() => {
+                    successAlert.style.display = 'none';
+                }, 5000); // Hide after 5 seconds
+            } else {
+                // Handle validation errors
+                if (data.errors) {
+                    data.errors.forEach(error => {
+                        const errorElement = document.getElementById(`${error.param}Error`);
+                        if (errorElement) {
+                            errorElement.textContent = error.msg;
+                            errorElement.style.display = 'block';
+                        }
+                    });
+                } else {
+                    // Show general error message
+                    const errorAlert = document.getElementById('errorAlert');
+                    errorAlert.textContent = data.error || 'Something went wrong! Please try again.';
+                    errorAlert.style.display = 'block';
+                    errorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            // Show error message
+            const errorAlert = document.getElementById('errorAlert');
+            errorAlert.textContent = 'Failed to send consultation request. Please try again later.';
+            errorAlert.style.display = 'block';
+            errorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } finally {
+            // Reset button state
+            buttonText.style.display = 'inline-block';
+            buttonLoader.style.display = 'none';
+            button.disabled = false;
+        }
+    }
+
+    // Smooth scroll for the "Request Consultation" button
+    document.addEventListener('DOMContentLoaded', function() {
+        const consultButton = document.querySelector('.featured-button');
+        if (consultButton) {
+            consultButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const formSection = document.getElementById('consultation-form');
+                if (formSection) {
+                    formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+    });
+    </script>    
     <script src="script.js"></script>
 </body>
 </html>
