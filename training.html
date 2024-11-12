@@ -7,8 +7,136 @@
     <title>Training & Workshops - Kalpavriksha Education Foundation</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  </head>
+  <style>
+    /* Registration Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        overflow-y: auto;
+    }
 
+    .modal-content {
+        background-color: #fff;
+        margin: 5% auto;
+        padding: 2rem;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 600px;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .close {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        color: #666;
+    }
+
+    .close:hover {
+        color: #333;
+    }
+
+    .registration-form {
+        margin-top: 1.5rem;
+    }
+
+    .alert {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        display: none;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .alert-error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
+    .form-error {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: none;
+    }
+
+    .registration-form .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .registration-form label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .registration-form input,
+    .registration-form select,
+    .registration-form textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+    .registration-form input:focus,
+    .registration-form select:focus,
+    .registration-form textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(72, 130, 93, 0.1);
+    }
+
+    .button-loader {
+        display: none;
+        margin-left: 0.5rem;
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .submit-button:hover {
+        background: var(--primary-dark);
+    }
+
+    .submit-button:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+</style>
+</head>
   <body>
     <!-- Header -->
     <header>
@@ -24,7 +152,7 @@
           <li><a href="training.html" class="active">Training</a></li>
           <li><a href="downloads.html">Downloads</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="payment.html">Payment</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
         </ul>
       </nav>
 
@@ -43,7 +171,7 @@
           <li><a href="training.html" class="active">Training</a></li>
           <li><a href="downloads.html">Downloads</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="payment.html">Payment</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
         </ul>
       </div>
 
@@ -83,7 +211,67 @@
         </div>
       </div>
     </section>
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 style="color: var(--primary); margin-bottom: 1.5rem;">Training Registration</h2>
+          
+          <!-- Alert Messages -->
+          <div id="successAlert" class="alert alert-success"></div>
+          <div id="errorAlert" class="alert alert-error"></div>
+          
+          <form id="registrationForm" class="registration-form">
+              <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" name="name" required>
+                  <div class="form-error" id="nameError"></div>
+              </div>
 
+              <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" required>
+                  <div class="form-error" id="emailError"></div>
+              </div>
+
+              <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" required>
+                  <div class="form-error" id="phoneError"></div>
+              </div>
+
+              <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" id="address" name="address" required>
+                  <div class="form-error" id="addressError"></div>
+              </div>
+
+              <div class="form-group">
+                  <label for="program">Program</label>
+                  <select id="program" name="program" required>
+                      <option value="English Phonics Training">English Phonics Training</option>
+                      <option value="Montessori Training">Montessori Training</option>
+                      <option value="Curriculum Development">Curriculum Development</option>
+                      <option value="Professional Development">Professional Development</option>
+                  </select>
+                  <div class="form-error" id="programError"></div>
+              </div>
+
+              <div class="form-group">
+                  <label for="message">Additional Message (Optional)</label>
+                  <textarea id="message" name="message" rows="4"></textarea>
+                  <div class="form-error" id="messageError"></div>
+              </div>
+
+              <button type="submit" class="submit-button">
+                  <span class="button-text">Register & Proceed to Payment</span>
+                  <span class="button-loader">
+                      <i class="fas fa-spinner fa-spin"></i>
+                  </span>
+              </button>
+          </form>
+      </div>
+  </div>
     <!-- Training Programs -->
     <section class="training-programs-section">
       <div class="container">
@@ -258,7 +446,119 @@
         <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
       </div>
     </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const modal = document.getElementById('registrationModal');
+          const closeBtn = document.querySelector('.close');
+          const registerButtons = document.querySelectorAll('a[href="#register"]');
+          const form = document.getElementById('registrationForm');
 
+          // Open modal when Register Now is clicked
+          registerButtons.forEach(button => {
+              button.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  modal.style.display = 'block';
+                  // Set the program value based on the button clicked
+                  const programSelect = document.getElementById('program');
+                  const programCard = this.closest('.program-card');
+                  if (programCard) {
+                      const programTitle = programCard.querySelector('h3').textContent;
+                      programSelect.value = programTitle;
+                  }
+              });
+          });
+
+          // Close modal
+          closeBtn.addEventListener('click', function() {
+              modal.style.display = 'none';
+          });
+
+          // Close modal when clicking outside
+          window.addEventListener('click', function(e) {
+              if (e.target === modal) {
+                  modal.style.display = 'none';
+              }
+          });
+
+          // Form submission
+          form.addEventListener('submit', async function(e) {
+              e.preventDefault();
+              
+              // Reset previous error messages
+              document.querySelectorAll('.form-error').forEach(el => el.style.display = 'none');
+              document.getElementById('successAlert').style.display = 'none';
+              document.getElementById('errorAlert').style.display = 'none';
+
+              // Show loading state
+              const button = form.querySelector('.submit-button');
+              const buttonText = button.querySelector('.button-text');
+              const buttonLoader = button.querySelector('.button-loader');
+              buttonText.style.display = 'none';
+              buttonLoader.style.display = 'inline-block';
+              button.disabled = true;
+
+              try {
+                  const formData = {
+                      name: document.getElementById('name').value,
+                      email: document.getElementById('email').value,
+                      phone: document.getElementById('phone').value,
+                      address: document.getElementById('address').value,
+                      program: document.getElementById('program').value,
+                      message: document.getElementById('message').value
+                  };
+
+                  const response = await fetch('http://localhost:5000/api/training/register', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify(formData)
+                  });
+
+                  const data = await response.json();
+
+                  if (response.ok) {
+                      // Show success message
+                      const successAlert = document.getElementById('successAlert');
+                      successAlert.textContent = 'Registration successful! Redirecting to payment...';
+                      successAlert.style.display = 'block';
+                      
+                      // Redirect to payment page after a short delay
+                      setTimeout(() => {
+                          window.location.href = 'payment.html';
+                      }, 2000);
+                  } else {
+                      // Handle validation errors
+                      if (data.errors) {
+                          data.errors.forEach(error => {
+                              const errorElement = document.getElementById(`${error.param}Error`);
+                              if (errorElement) {
+                                  errorElement.textContent = error.msg;
+                                  errorElement.style.display = 'block';
+                              }
+                          });
+                      } else {
+                          // Show general error message
+                          const errorAlert = document.getElementById('errorAlert');
+                          errorAlert.textContent = data.error || 'Registration failed. Please try again.';
+                          errorAlert.style.display = 'block';
+                      }
+                  }
+              } catch (error) {
+                  console.error('Error:', error);
+                  // Show error message
+                  const errorAlert = document.getElementById('errorAlert');
+                  errorAlert.textContent = 'Failed to submit registration. Please try again later.';
+                  errorAlert.style.display = 'block';
+              } finally {
+                  // Reset button state
+                  buttonText.style.display = 'inline-block';
+                  buttonLoader.style.display = 'none';
+                  button.disabled = false;
+              }
+          });
+      });
+  </script>
     <script src="script.js"></script>
   </body>
 

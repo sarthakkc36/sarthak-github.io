@@ -5,6 +5,7 @@ const cors = require('cors');
 const contactRoutes = require('./routes/contactRoutes');
 const consultationRoutes = require('./routes/consultationRoutes');
 const db = require('./config/database');
+const trainingRoutes = require('./routes/trainingRoutes');
 
 const app = express();
 
@@ -28,6 +29,7 @@ testConnection();
 // Routes
 app.use('/api/contact', contactRoutes);
 app.use('/api/consultation', consultationRoutes);
+app.use('/api/training', trainingRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
