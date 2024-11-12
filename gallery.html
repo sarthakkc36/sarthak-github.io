@@ -3,91 +3,471 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educational Consultation - Kalpavriksha Education Foundation</title>
+    <title>Gallery - Kalpavriksha Education Foundation</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="consultation-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .gallery-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            background: none;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-button.active,
+        .filter-button:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(72, 130, 93, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay-content {
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .overlay-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .overlay-content p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .modal-content img,
+        .modal-content video {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -2rem;
+            right: -2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+
+        .modal-caption {
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 2rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .modal {
+                padding: 1rem;
+            }
+
+            .modal-close {
+                top: -1.5rem;
+                right: -1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header remains the same -->
     <!-- Header -->
     <header>
-      <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Kalpavriksha Logo" />
-      </a>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Kalpavriksha Logo" />
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="consultation.html">Consultation</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+            </ul>
+        </nav>
 
-      <!-- Desktop Navigation -->
-      <nav class="desktop-nav">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="consultation.html">Consultation</a></li>
-          <li><a href="training.html">Training</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="gallery.html" class="active">Gallery</a></li>
-        </ul>
-      </nav>
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
 
-      <!-- Mobile Menu Button -->
-      <button class="mobile-menu-button" aria-label="Toggle mobile menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-
-      <!-- Mobile Menu -->
-      <div class="mobile-menu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="consultation.html">Consultation</a></li>
-          <li><a href="training.html">Training</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="gallery.html" class="active">Gallery</a></li>
-        </ul>
-      </div>
-
-      <!-- Mobile Menu Overlay -->
-    <div class="menu-overlay"></div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="consultation.html">Consultation</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+            </ul>
+        </div>
+        <div class="menu-overlay"></div>
     </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Gallery</h1>
+            <p>Explore our training sessions, workshops, and educational activities</p>
+        </div>
+    </section>
+
+    <div class="gallery-container">
+        <!-- Gallery Filters -->
+                    <div class="gallery-filters">
+            <button class="filter-button active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="training">Training Sessions</button>
+            <button class="filter-button" data-filter="workshops">Workshop Activities</button>
+            <button class="filter-button" data-filter="teaching">Teaching Resources</button>
+        </div>
+
+        <!-- Images Section -->
+        <div class="section-header">
+            <h2>Photo Gallery</h2>
+            <p>Capturing moments of learning and growth</p>
+        </div>
+        
+        <div class="gallery-grid" id="imageGallery">
+            <!-- Training Images -->
+            <div class="gallery-item" data-category="training">
+                <img src="images/phonics-teaching.jpg" alt="Phonics Teaching">
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <h3>English Phonics Teaching</h3>
+                        <p>Interactive phonics learning sessions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="training">
+                <img src="images/virtual-session.jpg" alt="Virtual Training Session">
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <h3>Virtual Training Program</h3>
+                        <p>7 Days Virtual Session on English Phonics</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="events">
+                <img src="images/Kids-Olympiad.jpg" alt="Kids Olympiad">
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <h3>Kids Olympiad</h3>
+                        <p>Annual educational event in Dang</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="workshops">
+                <img src="images/classroom-activities.jpg" alt="Classroom Activities">
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <h3>Interactive Learning</h3>
+                        <p>Hands-on classroom activities and demonstrations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Videos Section -->
+        <div class="section-header">
+            <h2>Video Gallery</h2>
+            <p>Watch our educational activities in action</p>
+        </div>
+        
+        <div class="gallery-grid" id="videoGallery">
+            <!-- Video Content -->
+            <div class="gallery-item" data-category="workshops">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID_1" title="Educational Debate | Shaikshik Bahas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <h3>Educational Debate</h3>
+                        <p>Shaikshik Bahas with Pratiksha Gautam</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="training">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID_2" title="Addressing the Loopholes in Modern Education" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <h3>Modern Education Analysis</h3>
+                        <p>Discussion on educational challenges and solutions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="workshops">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID_3" title="Virtual Training Session" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <h3>Virtual Training Highlights</h3>
+                        <p>Interactive online learning sessions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Media Display -->
+    <div class="modal" id="mediaModal">
+        <button class="modal-close">&times;</button>
+        <div class="modal-content">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+        <div class="modal-caption"></div>
+    </div>
+
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-content">
-          <div class="footer-section">
-            <h3>Contact Us</h3>
-            <div class="contact-info">
-              <p>
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
-              </p>
-              <p>
-                <i class="fas fa-phone"></i>
-                <span>+977 9857876262 | 9840056656</span>
-              </p>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        <span>+977 9857876262 | 9840056656</span>
+                    </p>
+                </div>
             </div>
-          </div>
-  
-          <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="training.html">Our Trainings</a></li>
-              <li><a href="downloads.html">Downloads</a></li>
-            </ul>
-          </div>
-  
-          <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-              <a href="https://www.facebook.com/kalpavrikshaeducation"><i class="fab fa-facebook-f"></i></a>
-              <a href="https://www.tiktok.com/@kalpaedu"><i class="fab fa-tiktok"></i></a>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="training.html">Our Trainings</a></li>
+                    <li><a href="downloads.html">Downloads</a></li>
+                </ul>
             </div>
-          </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/kalpavrikshaeducation"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@kalpaedu"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
         </div>
-  
+        
         <div class="footer-bottom">
-          <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
+            <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
         </div>
-      </footer>
-      <script src="script.js"></script>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const menuOverlay = document.querySelector('.menu-overlay');
+
+            function toggleMenu() {
+                mobileMenuBtn.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            }
+
+            if (mobileMenuBtn && mobileMenu && menuOverlay) {
+                mobileMenuBtn.addEventListener('click', toggleMenu);
+                menuOverlay.addEventListener('click', toggleMenu);
+                document.querySelectorAll('.mobile-menu a').forEach(link => {
+                    link.addEventListener('click', toggleMenu);
+                });
+            }
+
+            // Gallery Filtering
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.dataset.filter;
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Modal Functionality
+            const modal = document.getElementById('mediaModal');
+            const modalContent = modal.querySelector('.modal-content');
+            const modalCaption = modal.querySelector('.modal-caption');
+            const modalClose = modal.querySelector('.modal-close');
+
+            function openModal(mediaElement, caption) {
+                const clone = mediaElement.cloneNode(true);
+                modalContent.innerHTML = '';
+                modalContent.appendChild(clone);
+                modalCaption.textContent = caption;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('active');
+                modalContent.innerHTML = '';
+                modalCaption.textContent = '';
+                document.body.style.overflow = '';
+            }
+
+            // Add click handlers to gallery items
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const mediaElement = item.querySelector('img, video');
+                    const caption = item.querySelector('.overlay-content h3').textContent;
+                    openModal(mediaElement, caption);
+                });
+            });
+
+            // Close modal with button or outside click
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            
+            // Close modal with escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+        });
+    </script>
 </body>
 </html>
