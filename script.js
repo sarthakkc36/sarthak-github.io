@@ -954,15 +954,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-// Map loading optimization
+// Enhanced Map Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Lazy load maps when they come into view
     const observerOptions = {
         root: null,
         rootMargin: '50px',
         threshold: 0.1
     };
 
+    // Initialize map observer
     const mapObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -976,12 +976,99 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe both maps
+    // Observe maps for lazy loading
     const maps = document.querySelectorAll('#contact-map, #footer-map');
     maps.forEach(map => {
-        const src = map.src;
-        map.removeAttribute('src');
-        map.setAttribute('data-src', src);
-        mapObserver.observe(map);
+        if (map) {
+            const src = map.src;
+            map.removeAttribute('src');
+            map.setAttribute('data-src', src);
+            mapObserver.observe(map);
+        }
+    });
+
+    // Map container hover effect
+    const mapContainer = document.querySelector('.map-frame-container');
+    if (mapContainer) {
+        mapContainer.addEventListener('mouseover', function() {
+            this.style.transform = 'scale(1.01)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+
+        mapContainer.addEventListener('mouseout', function() {
+            this.style.transform = 'scale(1)';
+        });
+    }
+
+    // Button click handlers
+    const zoomButton = document.querySelector('.map-zoom-button');
+    if (zoomButton) {
+        zoomButton.addEventListener('click', function() {
+            window.open('https://www.google.com/maps?q=M8RH+SH,+Kathmandu+44600', '_blank');
+        });
+    }
+
+    // Smooth scroll for direction buttons
+    const directionButtons = document.querySelectorAll('.directions-button');
+    directionButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            if (!this.hasAttribute('target')) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    const element = document.querySelector(href);
+                    if (element) {
+                        element.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }
+        });
+    });
+
+    // Add loading animation
+    const mapFrames = document.querySelectorAll('iframe');
+    mapFrames.forEach(frame => {
+        frame.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
+        frame.style.opacity = '0';
+        frame.style.transition = 'opacity 0.5s ease';
+    });
+
+    // Handle map errors
+    mapFrames.forEach(frame => {
+        frame.addEventListener('error', function() {
+            this.style.display = 'none';
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'map-error';
+            errorMessage.innerHTML = `
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Map could not be loaded. Please try again later.</p>
+            `;
+            this.parentNode.appendChild(errorMessage);
+        });
+    });
+});
+
+// Additional helper functions
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    const maps = document.querySelectorAll('#contact-map, #footer-map');
+    maps.forEach(map => {
+        if (map && isInViewport(map)) {
+            map.style.opacity = '1';
+        }
     });
 });
