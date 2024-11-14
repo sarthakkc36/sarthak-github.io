@@ -1072,3 +1072,6 @@ window.addEventListener('resize', function() {
         }
     });
 });
+function openFullMap() {
+    window.open('https://maps.app.goo.gl/7YBEzH2ifte2T4P46', '_blank');
+}
