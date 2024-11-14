@@ -954,3 +954,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+// Map loading optimization
+document.addEventListener('DOMContentLoaded', function() {
+    // Lazy load maps when they come into view
+    const observerOptions = {
+        root: null,
+        rootMargin: '50px',
+        threshold: 0.1
+    };
+
+    const mapObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const map = entry.target;
+                if (map.getAttribute('data-src')) {
+                    map.src = map.getAttribute('data-src');
+                    map.removeAttribute('data-src');
+                    observer.unobserve(map);
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe both maps
+    const maps = document.querySelectorAll('#contact-map, #footer-map');
+    maps.forEach(map => {
+        const src = map.src;
+        map.removeAttribute('src');
+        map.setAttribute('data-src', src);
+        mapObserver.observe(map);
+    });
+});
