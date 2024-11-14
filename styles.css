@@ -3924,14 +3924,6 @@ section {
   background-color: var(--primary);
   padding-top: 4rem;
 }
-
-/* Remove the background color that might be causing the gap */
-body {
-  background-color: var(--primary); /* Match the footer background */
-  margin: 0;
-  padding: 0;
-}
-
 /* Ensure sections are properly connected */
 .cta-section + .site-footer {
   margin-top: 0;
