@@ -3907,3 +3907,38 @@ iframe {
       font-size: 0.9rem;
   }
 }
+/* First, remove any default margins between sections */
+section {
+  margin: 0;
+  padding: 0;
+}
+
+/* Adjust the CTA section and footer spacing */
+.cta-section {
+  margin-bottom: 0; /* Remove bottom margin */
+  padding: 4rem 0; /* Keep padding for internal spacing */
+}
+
+.site-footer {
+  margin-top: 0; /* Remove top margin */
+  background-color: var(--primary);
+  padding-top: 4rem;
+}
+
+/* Remove the background color that might be causing the gap */
+body {
+  background-color: var(--primary); /* Match the footer background */
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure sections are properly connected */
+.cta-section + .site-footer {
+  margin-top: 0;
+}
+
+/* Remove any potential gaps in the container */
+.container {
+  margin: 0 auto;
+  padding: 0 2rem;
+}
