@@ -3826,3 +3826,13 @@ iframe {
       margin-bottom: 0.25rem;
   }
 }
+@media (max-width: 768px) {
+  .top-info-bar {
+      display: none;
+  }
+  
+  /* Add some top padding to the main header to compensate */
+  .header {
+      padding-top: 1rem;
+  }
+}
