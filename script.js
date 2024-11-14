@@ -1075,3 +1075,16 @@ window.addEventListener('resize', function() {
 function openFullMap() {
     window.open('https://maps.app.goo.gl/7YBEzH2ifte2T4P46', '_blank');
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.info-slider');
+    
+    if (slider) {
+        slider.addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
+        });
+        
+        slider.addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
+        });
+    }
+});

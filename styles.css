@@ -3826,13 +3826,84 @@ iframe {
       margin-bottom: 0.25rem;
   }
 }
+.top-info-bar {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.info-slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.info-slide {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.info-slide i {
+  font-size: 1rem;
+}
+
+.info-slide a {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.info-slide a:hover {
+  opacity: 0.8;
+}
+
 @media (max-width: 768px) {
-  .top-info-bar {
-      display: none;
+  .info-slider {
+      animation: scroll-left 20s linear infinite;
+      display: flex;
+      gap: 3rem;
   }
-  
-  /* Add some top padding to the main header to compensate */
-  .header {
-      padding-top: 1rem;
+
+  .container {
+      overflow: hidden;
+  }
+
+  .top-info-bar {
+      padding: 0.3rem 0;
+  }
+
+  .info-slide {
+      flex-shrink: 0;
+  }
+
+  @keyframes scroll-left {
+      0% {
+          transform: translateX(100%);
+      }
+      100% {
+          transform: translateX(-100%);
+      }
+  }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+  .info-slide {
+      font-size: 0.8rem;
+  }
+
+  .info-slide i {
+      font-size: 0.9rem;
   }
 }
