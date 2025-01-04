@@ -1,592 +1,859 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training & Workshops - Kalpavriksha Education Foundation</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<head>
+  <!-- Favicon and Icon Links -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/android-chrome-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#48825d">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Kalpavriksha Education Foundation">
+  <meta name="description"
+    content="Empowering schools and teachers with expert training, consultation, and child-focused educational resources.">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kalpaeducation.com">
+  <meta property="og:title" content="Kalpavriksha Education Foundation">
+  <meta property="og:description"
+    content="Empowering schools and teachers with expert training, consultation, and child-focused educational resources.">
+  <meta property="og:image" content="https://kalpaeducation.com/images/android-chrome-512x512.png">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://kalpaeducation.com">
+  <meta name="twitter:title" content="Kalpavriksha Education Foundation">
+  <meta name="twitter:description"
+    content="Empowering schools and teachers with expert training, consultation, and child-focused educational resources.">
+  <meta name="twitter:image" content="https://kalpaeducation.com/images/android-chrome-512x512.png">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training &amp; Workshops - Kalpavriksha Education Foundation</title>
+  <link rel="stylesheet" href="styles.css?v=1.0?v=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     /* Registration Modal Styles */
     .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5);
-        overflow-y: auto;
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      overflow-y: auto;
     }
 
     .modal-content {
-        background-color: #fff;
-        margin: 5% auto;
-        padding: 2rem;
-        border-radius: 12px;
-        width: 90%;
-        max-width: 600px;
-        position: relative;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .close {
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-        font-size: 1.5rem;
-        font-weight: bold;
-        cursor: pointer;
-        color: #666;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: #666;
     }
 
     .close:hover {
-        color: #333;
+      color: #333;
     }
 
     .registration-form {
-        margin-top: 1.5rem;
+      margin-top: 1.5rem;
     }
 
     .alert {
-        padding: 1rem;
-        margin-bottom: 1rem;
-        border-radius: 8px;
-        display: none;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      display: none;
     }
 
     .alert-success {
-        background-color: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
     }
 
     .alert-error {
-        background-color: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
     }
 
     .form-error {
-        color: #dc3545;
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
-        display: none;
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
     }
 
     .registration-form .form-group {
-        margin-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .registration-form label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: #333;
-        font-weight: bold;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333;
+      font-weight: bold;
     }
 
     .registration-form input,
     .registration-form select,
     .registration-form textarea {
-        width: 100%;
-        padding: 0.8rem;
-        border: 2px solid #ddd;
-        border-radius: 8px;
-        font-size: 1rem;
-        transition: border-color 0.3s ease;
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
     }
 
     .registration-form input:focus,
     .registration-form select:focus,
     .registration-form textarea:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(72, 130, 93, 0.1);
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(72, 130, 93, 0.1);
     }
 
     .button-loader {
-        display: none;
-        margin-left: 0.5rem;
+      display: none;
+      margin-left: 0.5rem;
     }
 
     .submit-button {
-        width: 100%;
-        padding: 1rem;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .submit-button:hover {
-        background: var(--primary-dark);
+      background: var(--primary-dark);
     }
 
     .submit-button:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
+      opacity: 0.7;
+      cursor: not-allowed;
     }
-</style>
+    :root {
+            --primary: #48825d;
+            --primary-light: rgba(72, 130, 93, 0.1);
+            --background: #f6f6e5;
+            --text: #333333;
+            --white: #FFFFFF;
+        }
+
+        .training-hero {
+            background: linear-gradient(rgba(72, 130, 93, 0.05), rgba(72, 130, 93, 0.05));
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .upcoming-training {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-feed {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-post {
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .post-meta {
+            flex-grow: 1;
+        }
+
+        .post-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .module-list {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .module-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .register-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .register-button:hover {
+            background: #3a6b4a;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        } 
+  </style>
+  <link rel="stylesheet" href="optimization.css">
+<link rel="stylesheet" href="scroll-to-top.css">
 </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Kalpavriksha Logo" />
-      </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="desktop-nav">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="consultation.html">Consultation</a></li>
-          <li><a href="training.html" class="active">Training</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-        </ul>
-      </nav>
+<body>
+  <!-- Header -->
+  <header>
+    <a href="/index" class="logo">
+      <img src="images/logo.webp" alt="Kalpavriksha Logo" width="auto" height="auto" />
+    </a>
 
-      <!-- Mobile Menu Button -->
-      <button class="mobile-menu-button" aria-label="Toggle mobile menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <ul class="nav-links">
+        <li><a href="/index">Home</a></li>
+        <li><a href="/consultation">Consultation</a></li>
+        <li><a href="/training" class="active">Training</a></li>
+        <li><a href="/Resources">Resources</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+      </ul>
+    </nav>
 
-      <!-- Mobile Menu -->
-      <div class="mobile-menu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="consultation.html">Consultation</a></li>
-          <li><a href="training.html" class="active">Training</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-        </ul>
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-button" aria-label="Toggle mobile menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <ul>
+        <li><a href="/index">Home</a></li>
+        <li><a href="/consultation">Consultation</a></li>
+        <li><a href="/training" class="active">Training</a></li>
+        <li><a href="/Resources">Resources</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/about-us">About Us</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+      </ul>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+  </header>
+  <div class="top-info-bar">
+    <div class="container">
+      <div class="info-slider">
+        <div class="info-slide">
+          <i class="fas fa-phone"></i>
+           <a href="tel:01-4547300">01-4547300</a>
+        </div>
+        <div class="info-slide">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
+        </div>
+        <div class="info-slide">
+          <i class="far fa-clock"></i>
+          Office Hour: 9am - 6pm
+        </div>
+        <div class="info-slide">
+          <i class="fas fa-map-marker-alt"></i>
+          Maharajgunj, Kathmandu, Nepal || Ghorahi, Dang, Nepal
+        </div>
       </div>
+    </div>
+  </div>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Training &amp; Workshops</h1>
+      <p>Comprehensive training programs designed to enhance teaching methodologies and student outcomes</p>
+    </div>
+  </section>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Training Programs - Kalpavriksha Education Foundation</title>
+      <style>
+          :root {
+              --primary: #48825d;
+              --primary-light: rgba(72, 130, 93, 0.1);
+              --background: #f6f6e5;
+              --text: #333333;
+              --white: #FFFFFF;
+          }
+  
+          .training-hero {
+              background: linear-gradient(rgba(72, 130, 93, 0.05), rgba(72, 130, 93, 0.05));
+              padding: 4rem 2rem;
+              text-align: center;
+          }
+  
+          .content-grid {
+              display: grid;
+              grid-template-columns: 2fr 1fr;
+              gap: 2rem;
+              max-width: 1200px;
+              margin: 0 auto;
+              padding: 2rem;
+          }
+  
+          .upcoming-training {
+              background: white;
+              border-radius: 20px;
+              padding: 2rem;
+              box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          }
+  
+          .social-feed {
+              background: white;
+              border-radius: 20px;
+              padding: 2rem;
+              box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          }
+  
+          .social-post {
+              border: 1px solid #e0e0e0;
+              border-radius: 15px;
+              padding: 1.5rem;
+              margin-bottom: 2rem;
+          }
+  
+          .post-header {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              margin-bottom: 1rem;
+          }
+  
+          .post-logo {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              object-fit: cover;
+          }
+  
+          .post-meta {
+              flex-grow: 1;
+          }
+  
+          .post-content {
+              font-size: 0.95rem;
+              line-height: 1.6;
+          }
+  
+          .post-actions {
+              display: flex;
+              gap: 1rem;
+              margin-top: 1rem;
+              padding-top: 1rem;
+              border-top: 1px solid #e0e0e0;
+          }
+  
+          .action-button {
+              display: inline-flex;
+              align-items: center;
+              gap: 0.5rem;
+              padding: 0.5rem 1rem;
+              border: none;
+              background: var(--primary-light);
+              color: var(--primary);
+              border-radius: 20px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+          }
+  
+          .module-list {
+              margin: 1rem 0;
+              padding-left: 1.5rem;
+          }
+  
+          .module-list li {
+              margin-bottom: 0.5rem;
+          }
+  
+          .register-button {
+              display: inline-block;
+              background: var(--primary);
+              color: white;
+              padding: 0.8rem 1.5rem;
+              border-radius: 20px;
+              text-decoration: none;
+              transition: all 0.3s ease;
+          }
+  
+          .register-button:hover {
+              background: #3a6b4a;
+              transform: translateY(-2px);
+          }
+  
+          @media (max-width: 992px) {
+              .content-grid {
+                  grid-template-columns: 1fr;
+              }
+          }
+      </style>
+  <link rel="stylesheet" href="scroll-to-top.css">
+</head>
+<!-- Featured Training Programs -->
+<section class="featured-program">
+  <style>
+      .featured-program {
+          padding: 4rem 2rem;
+          background: var(--background);
+      }
 
-      <!-- Mobile Menu Overlay -->
-      <div class="menu-overlay"></div>
-    </header>
-    <div class="top-info-bar">
-      <div class="container">
-          <div class="info-slider">
-              <div class="info-slide">
-                  <i class="fas fa-phone"></i>
-                  Call us: <a href="tel:+9779857876262">+977-9857876262</a>
+      .program-container {
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      .program-card {
+          background: white;
+          border-radius: 20px;
+          padding: 3rem;
+          margin-bottom: 3rem;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          position: relative;
+      }
+
+      .badge {
+          position: absolute;
+          top: 1.5rem;
+          right: 1.5rem;
+          background: var(--primary);
+          color: white;
+          padding: 0.5rem 1.5rem;
+          border-radius: 25px;
+          font-weight: bold;
+      }
+
+      .program-title {
+          color: var(--primary);
+          font-size: 2rem;
+          margin-bottom: 1.5rem;
+          padding-right: 120px;
+      }
+
+      .program-description {
+          color: #666;
+          font-style: italic;
+          margin-bottom: 2rem;
+          line-height: 1.6;
+      }
+
+      .program-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+          margin-bottom: 2rem;
+      }
+
+      .info-box {
+          background: var(--background);
+          padding: 2rem;
+          border-radius: 15px;
+      }
+
+      .info-box h3 {
+          color: var(--primary);
+          margin-bottom: 1.5rem;
+          font-size: 1.3rem;
+      }
+
+      .info-item {
+          margin-bottom: 1rem;
+      }
+
+      .info-item:last-child {
+          margin-bottom: 0;
+      }
+
+      .info-item i {
+          color: var(--primary);
+          width: 20px;
+          margin-right: 0.5rem;
+      }
+
+      .feature-list {
+          list-style: none;
+          padding: 0;
+      }
+
+      .feature-list li {
+          margin-bottom: 0.8rem;
+          padding-left: 1.5rem;
+          position: relative;
+      }
+
+      .feature-list li:before {
+          content: "•";
+          color: var(--primary);
+          position: absolute;
+          left: 0;
+      }
+
+      .cta-section {
+          text-align: center;
+          margin-top: 2rem;
+          padding: 2rem;
+          background: var(--background);
+          border-radius: 15px;
+      }
+
+      .register-button {
+          display: inline-block;
+          background: var(--primary);
+          color: white;
+          padding: 1rem 2.5rem;
+          border-radius: 50px;
+          text-decoration: none;
+          font-weight: bold;
+          margin-bottom: 1rem;
+          transition: background-color 0.3s ease;
+      }
+
+      .register-button:hover {
+          background: var(--primary-dark);
+      }
+
+      .contact-info {
+          color: #666;
+          margin-top: 1rem;
+      }
+
+      @media (max-width: 768px) {
+          .program-grid {
+              grid-template-columns: 1fr;
+          }
+
+          .program-title {
+              padding-right: 0;
+              margin-top: 3rem;
+          }
+
+          .badge {
+              top: 1rem;
+              right: 1rem;
+          }
+
+          .program-card {
+              padding: 2rem;
+          }
+      }
+  </style>
+
+  <div class="program-container">
+      <!-- Classroom Management Program -->
+      <div class="program-card">
+          <div class="badge">New</div>
+          <h2 class="program-title">Effective Classroom Management &amp; Life Skill Education</h2>
+          <p class="program-description">5-day virtual program for pre-primary and primary level teachers</p>
+
+          <div class="program-grid">
+              <div class="info-box">
+                  <h3>Event Details</h3>
+                  <div class="info-item">
+                      <i class="fas fa-calendar-alt"></i>
+                      <strong>Date:</strong> मङ्सिर २६, बुधवार
+                  </div>
+                  <div class="info-item">
+                      <i class="fas fa-clock"></i>
+                      <strong>Time:</strong> ८ देखि ९:३० बजे
+                  </div>
+                  <div class="info-item">
+                      <i class="fas fa-tag"></i>
+                      <strong>Fee:</strong> Rs. 2500/-
+                  </div>
+                  <div class="info-item">
+                      <i class="fas fa-video"></i>
+                      <strong>Mode:</strong> Virtual Training
+                  </div>
               </div>
-              <div class="info-slide">
-                  <i class="fas fa-envelope"></i>
-                  <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
+
+              <div class="info-box">
+                  <h3>Course Curriculum</h3>
+                  <ul class="feature-list">
+                      <li>Creating Inclusive and Supportive Learning Environments</li>
+                      <li>Establishing Routines and Procedures</li>
+                      <li>Positive Discipline Techniques</li>
+                      <li>Life Skills - Holistic Child Development</li>
+                      <li>Life Skills - A Roadmap for a Better Future</li>
+                  </ul>
               </div>
-              <div class="info-slide">
-                  <i class="far fa-clock"></i>
-                  Office Hour: 8:45am - 5:15pm
-              </div>
-              <div class="info-slide">
-                  <i class="fas fa-map-marker-alt"></i>
-                  Kathmandu, Nepal
+          </div>
+
+          <div class="cta-section">
+              <p style="color: var(--primary); margin-bottom: 2rem;">
+                  Embark on a journey of advancement. It's time to refresh our teaching methodologies. 
+                  Unlearn the OLD, OBSOLETE AND OUTDATED METHODOLOGIES and let's relearn the NEW PARADIGM 
+                  because your knowledge holds the future of a child.
+              </p>
+              <a href="https://bit.ly/40ad5fu" target="_blank" class="register-button">Register Now</a>
+              <div class="contact-info">
+                  For queries: 9851364262 | 9840056656
               </div>
           </div>
       </div>
   </div>
-    <!-- Page Header -->
-    <section class="page-header">
-      <div class="container">
-        <h1>Training & Workshops</h1>
-        <p>Comprehensive training programs designed to enhance teaching methodologies and student outcomes</p>
-      </div>
-    </section>
+</section>
+ <!-- Featured Training Program -->
+ <section class="featured-program" style="padding: 2rem 0;">
+  <div class="container" style="max-width: 1200px; margin: 0 auto;">
+      <div style="background: white; border-radius: 20px; padding: 2.5rem; margin: 0 2rem; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+          <div style="position: absolute; top: -15px; right: 20px; background: var(--primary); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: bold;">Featured</div>
+          
+          <h2 style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem;">Intensive Course For Educators</h2>
+          <p style="font-style: italic; margin-bottom: 2rem;">"Unlock the transformative power of education with our online ECD &amp; Montessori Training – where passion meets purpose, and learning becomes a lifelong adventure!"</p>
 
-    <!-- Featured Training Program -->
-    <section class="featured-resources">
-      <div class="container">
-        <h2 class="section-title">Featured Program: English Phonics Training</h2>
-        <div class="resources-grid">
-          <div class="resource-card featured">
-            <div class="resource-badge">Popular</div>
-            <div class="resource-content">
-              <h3>7 Days Virtual Session on English Phonics</h3>
-              <p>Learn the foundation of English Literacy and crack the English alphabetical code systematically</p>
-              <ul class="package-features">
-                <li><i class="fas fa-check"></i> Basic Phonics (6 days)</li>
-                <li><i class="fas fa-check"></i> Phonemic Awareness</li>
-                <li><i class="fas fa-check"></i> 42 sounds with fun activities</li>
-                <li><i class="fas fa-check"></i> Blending and Segmenting</li>
-                <li><i class="fas fa-check"></i> Curriculum Guidelines (Pre-primary level)</li>
-              </ul>
-              <div class="price-tag">Price: Rs. 3,000/- only</div>
-              <a href="#register" class="package-button">Register Now</a>
-            </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+              <!-- Course Details -->
+              <div>
+                  <h3 style="color: var(--primary); margin-bottom: 1rem;">Course Overview</h3>
+                  <div style="background: var(--background); padding: 1.5rem; border-radius: 15px;">
+                      <div style="margin-bottom: 1rem;">
+                          <strong>Date:</strong> मङ्सिर २६, बुधवार
+                      </div>
+                      <div style="margin-bottom: 1rem;">
+                          <strong>Time:</strong> ८ देखि ९:३० बजे
+                      </div>
+                      <div style="margin-bottom: 1rem;">
+                          <strong>Fee:</strong> Rs 6500/-
+                      </div>
+                      <div>
+                          <strong>Mode:</strong> Online Training
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Registration -->
+              <div>
+                  <h3 style="color: var(--primary); margin-bottom: 1rem;">How to Join</h3>
+                  <div style="background: var(--background); padding: 1.5rem; border-radius: 15px;">
+                      <p style="margin-bottom: 1rem;">Register now to secure your spot in this transformative training program.</p>
+                      <a href="https://bit.ly/4eReXOf" target="_blank" style="display: block; background: var(--primary); color: white; text-align: center; padding: 1rem; border-radius: 8px; text-decoration: none; margin-bottom: 1rem;">Register Now</a>
+                      <div style="text-align: center; color: #666;">
+                          Contact for queries:<br>
+                          9851364262 | 9840056656
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
-      </div>
-    </section>
-    <!-- Registration Modal -->
-    <div id="registrationModal" class="modal">
-      <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 style="color: var(--primary); margin-bottom: 1.5rem;">Training Registration</h2>
-          
-          <!-- Alert Messages -->
-          <div id="successAlert" class="alert alert-success"></div>
-          <div id="errorAlert" class="alert alert-error"></div>
-          
-          <form id="registrationForm" class="registration-form">
-              <div class="form-group">
-                  <label for="name">Full Name</label>
-                  <input type="text" id="name" name="name" required>
-                  <div class="form-error" id="nameError"></div>
-              </div>
 
-              <div class="form-group">
-                  <label for="email">Email Address</label>
-                  <input type="email" id="email" name="email" required>
-                  <div class="form-error" id="emailError"></div>
-              </div>
+          <!-- Course Curriculum -->
+          <div style="margin-top: 3rem;">
+              <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Course Curriculum</h3>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                  <!-- Module 1 -->
+                  <div style="background: var(--background); padding: 1.5rem; border-radius: 15px;">
+                      <h4 style="color: var(--primary); margin-bottom: 1rem;">🌱 Module 1</h4>
+                      <ul style="list-style: none; padding: 0;">
+                          <li style="margin-bottom: 0.5rem;">• Introduction to Early Childhood Education</li>
+                          <li style="margin-bottom: 0.5rem;">• Cognitive, social, emotional development</li>
+                          <li style="margin-bottom: 0.5rem;">• Strategies for holistic development</li>
+                      </ul>
+                  </div>
 
-              <div class="form-group">
-                  <label for="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone" required>
-                  <div class="form-error" id="phoneError"></div>
-              </div>
+                  <!-- Module 2 -->
+                  <div style="background: var(--background); padding: 1.5rem; border-radius: 15px;">
+                      <h4 style="color: var(--primary); margin-bottom: 1rem;">🏫 Module 2</h4>
+                      <ul style="list-style: none; padding: 0;">
+                          <li style="margin-bottom: 0.5rem;">• Classroom Management</li>
+                          <li style="margin-bottom: 0.5rem;">• Establishing routines and procedures</li>
+                          <li style="margin-bottom: 0.5rem;">• Creating inclusive environments</li>
+                      </ul>
+                  </div>
 
-              <div class="form-group">
-                  <label for="address">Address</label>
-                  <input type="text" id="address" name="address" required>
-                  <div class="form-error" id="addressError"></div>
-              </div>
+                  <!-- Module 3 -->
+                  <div style="background: var(--background); padding: 1.5rem; border-radius: 15px;">
+                      <h4 style="color: var(--primary); margin-bottom: 1rem;">🎯 Module 3</h4>
+                      <ul style="list-style: none; padding: 0;">
+                          <li style="margin-bottom: 0.5rem;">• Developing Effective Facilitating Skills</li>
+                          <li style="margin-bottom: 0.5rem;">• The Art of Story-Telling</li>
+                          <li style="margin-bottom: 0.5rem;">• Songs&amp; Rhymes</li>
+                      </ul>
+                  </div>
 
-              <div class="form-group">
-                  <label for="program">Program</label>
-                  <select id="program" name="program" required>
-                      <option value="English Phonics Training">English Phonics Training</option>
-                      <option value="Montessori Training">Montessori Training</option>
-                      <option value="Curriculum Development">Curriculum Development</option>
-                      <option value="Professional Development">Professional Development</option>
-                  </select>
-                  <div class="form-error" id="programError"></div>
-              </div>
+                  <!-- Module 4 -->
+                  <div style="background: var(--background); padding: 1.5rem; border-radius: 15px;">
+                      <h4 style="color: var(--primary); margin-bottom: 1rem;">📚 Module 4</h4>
+                      <ul style="list-style: none; padding: 0;">
+                          <li style="margin-bottom: 0.5rem;">• Montessori Education&amp; Strategies</li>
+                          <li style="margin-bottom: 0.5rem;">• Language Development</li>
+                          <li style="margin-bottom: 0.5rem;">• Making Mathematics Meaningful</li>
+                      </ul>
+                  </div>
 
-              <div class="form-group">
-                  <label for="message">Additional Message (Optional)</label>
-                  <textarea id="message" name="message" rows="4"></textarea>
-                  <div class="form-error" id="messageError"></div>
+                  <!-- Module 5 -->
+                  <div style="background: var(--background); padding: 1.5rem; border-radius: 15px;">
+                      <h4 style="color: var(--primary); margin-bottom: 1rem;">📝 Module 5</h4>
+                      <ul style="list-style: none; padding: 0;">
+                          <li style="margin-bottom: 0.5rem;">• Planning&amp; Implementation</li>
+                          <li style="margin-bottom: 0.5rem;">• Lesson Planning</li>
+                          <li style="margin-bottom: 0.5rem;">• Evaluation&amp; Child Portfolio</li>
+                      </ul>
+                  </div>
               </div>
+          </div>
 
-              <button type="submit" class="submit-button">
-                  <span class="button-text">Register & Proceed to Payment</span>
-                  <span class="button-loader">
-                      <i class="fas fa-spinner fa-spin"></i>
-                  </span>
-              </button>
-          </form>
+          <!-- Call to Action -->
+          <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--background); border-radius: 15px;">
+              <p style="font-style: italic; color: var(--primary); margin-bottom: 2rem;">Hop on a ride to advancement. It's time we update ourselves and our teaching methodologies. Unlearn the OLD, OBSOLETE AND OUTDATED METHODOLOGIES and let's relearn the NEW PARADIGM because your knowledge holds the future of a child.</p>
+              <a href="https://bit.ly/4eReXOf" class="cta-button" style="display: inline-block; background: var(--primary); color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold;">Register Now</a>
+          </div>
       </div>
   </div>
-    <!-- Training Programs -->
-    <section class="training-programs-section">
-      <div class="container">
-        <h2 class="section-title">Our Training Programs</h2>
-        <div class="programs-grid">
-          <div class="program-card">
-            <div class="program-content">
-              <h3>Montessori Training</h3>
-              <p>Comprehensive training in Montessori methodology</p>
-              <ul class="program-features">
-                <li><i class="fas fa-check"></i> Montessori philosophy and principles</li>
-                <li><i class="fas fa-check"></i> Practical life exercises</li>
-                <li><i class="fas fa-check"></i> Sensorial development</li>
-                <li><i class="fas fa-check"></i> Classroom management</li>
-              </ul>
-              <a href="contact.html" class="program-button">Learn More</a>
-            </div>
-          </div>
+ </section>
+  <!-- Contact Section -->
 
-          <div class="program-card">
-            <div class="program-content">
-              <h3>Curriculum Development</h3>
-              <p>Pre and Primary Level Consultation</p>
-              <ul class="program-features">
-                <li><i class="fas fa-check"></i> Integrated curriculum design</li>
-                <li><i class="fas fa-check"></i> Assessment planning</li>
-                <li><i class="fas fa-check"></i> Activity-based learning</li>
-                <li><i class="fas fa-check"></i> Resource development</li>
-              </ul>
-              <a href="contact.html" class="program-button">Learn More</a>
-            </div>
-          </div>
-
-          <div class="program-card">
-            <div class="program-content">
-              <h3>Professional Development</h3>
-              <p>For Teachers and Administrators</p>
-              <ul class="program-features">
-                <li><i class="fas fa-check"></i> Teaching methodologies</li>
-                <li><i class="fas fa-check"></i> Classroom management</li>
-                <li><i class="fas fa-check"></i> Student assessment</li>
-                <li><i class="fas fa-check"></i> Leadership skills</li>
-              </ul>
-              <a href="contact.html" class="program-button">Learn More</a>
-            </div>
-          </div>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <div class="footer-map">
+          <iframe id="footer-map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.36972741325!2d85.33915669999999!3d27.736739999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19004faf0233%3A0xdbc2d75753d59dd5!2sKalpavriksha%20Education%20Foundation!5e0!3m2!1sen!2snp!4v1731578433006!5m2!1sen!2snp"
+            width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <a href="https://maps.app.goo.gl/7YBEzH2ifte2T4P46" class="footer-directions-button" target="_blank">
+            <i class="fas fa-directions"></i> Get Directions
+          </a>
         </div>
-      </div>
-    </section>
-
-    <!-- Training Methods -->
-    <section class="methodology-section">
-      <div class="container">
-        <h2 class="section-title">Training Methods</h2>
-        <div class="methodology-steps">
-          <div class="step">
-            <span class="step-number">01</span>
-            <h3>Interactive Sessions</h3>
-            <p>Engaging presentations and creative discussions</p>
-          </div>
-          <div class="step">
-            <span class="step-number">02</span>
-            <h3>Practical Learning</h3>
-            <p>Hands-on activities and demonstrations</p>
-          </div>
-          <div class="step">
-            <span class="step-number">03</span>
-            <h3>Collaborative Work</h3>
-            <p>Peer learning and group activities</p>
-          </div>
-          <div class="step">
-            <span class="step-number">04</span>
-            <h3>Resource Support</h3>
-            <p>Comprehensive materials and guidance</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Training Materials -->
-    <section class="materials-section">
-      <div class="container">
-        <h2 class="section-title">Training Materials & Resources</h2>
-        <div class="materials-grid">
-          <div class="material-card">
-            <i class="fas fa-book"></i>
-            <h3>Handouts & Guides</h3>
-            <p>Detailed lesson plans and teaching guides</p>
-          </div>
-
-          <div class="material-card">
-            <i class="fas fa-paint-brush"></i>
-            <h3>Activity Resources</h3>
-            <p>Worksheets, coloring sheets, and wall displays</p>
-          </div>
-
-          <div class="material-card">
-            <i class="fas fa-check-circle"></i>
-            <h3>Assessment Tools</h3>
-            <p>Teacher checklists and evaluation forms</p>
-          </div>
-
-          <div class="material-card">
-            <i class="fas fa-certificate"></i>
-            <h3>Certification</h3>
-            <p>Professional certification upon completion</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="cta-section">
-      <div class="cta-content">
-        <h2>Ready to Enhance Your Teaching Skills?</h2>
-        <p>Contact us for registration and program details</p>
-        <div class="contact-details">
-          <p><i class="fas fa-phone"></i> +977 9857876262 | 9840056656</p>
-          <p><i class="fas fa-envelope"></i> kalpavriksha.efn@gmail.com</p>
-        </div>
-        <a href="#register" class="cta-button">Enroll Now</a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <div class="footer-map">
-            <iframe 
-                id="footer-map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.36972741325!2d85.33915669999999!3d27.736739999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19004faf0233%3A0xdbc2d75753d59dd5!2sKalpavriksha%20Education%20Foundation!5e0!3m2!1sen!2snp!4v1731578433006!5m2!1sen!2snp"
-                width="100%" 
-                height="200" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-            <a href="https://maps.app.goo.gl/7YBEzH2ifte2T4P46" 
-            class="footer-directions-button" 
-            target="_blank">
-                <i class="fas fa-directions"></i> Get Directions
-            </a>
-        </div>
-          <div class="contact-info">
-            <p>
-              <i class="fas fa-envelope"></i>
-              <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
-            </p>
-            <p>
-              <i class="fas fa-phone"></i>
-              <span>+977 9857876262 | 9840056656</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="training.html">Our Trainings</a></li>
-            <li><a href="downloads.html">Downloads</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h3>Follow Us</h3>
-          <div class="social-links">
-            <a href="https://www.facebook.com/kalpavrikshaeducation"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.tiktok.com/@kalpaedu"><i class="fab fa-tiktok"></i></a>
-          </div>
+        <div class="contact-info">
+          <p>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
+          </p>
+          <p>
+            <i class="fas fa-phone"></i>
+            <span>+977 9851364262 | 9840056656</span>
+          </p>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="/index">Home</a></li>
+          <li><a href="/training">Our Trainings</a></li>
+          <li><a href="/Resources">Resources</a></li>
+        </ul>
       </div>
-    </footer>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const modal = document.getElementById('registrationModal');
-          const closeBtn = document.querySelector('.close');
-          const registerButtons = document.querySelectorAll('a[href="#register"]');
-          const form = document.getElementById('registrationForm');
 
-          // Open modal when Register Now is clicked
-          registerButtons.forEach(button => {
-              button.addEventListener('click', function(e) {
-                  e.preventDefault();
-                  modal.style.display = 'block';
-                  // Set the program value based on the button clicked
-                  const programSelect = document.getElementById('program');
-                  const programCard = this.closest('.program-card');
-                  if (programCard) {
-                      const programTitle = programCard.querySelector('h3').textContent;
-                      programSelect.value = programTitle;
-                  }
-              });
-          });
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="https://www.facebook.com/kalpavrikshaeducation"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.tiktok.com/@kalpaedu"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
 
-          // Close modal
-          closeBtn.addEventListener('click', function() {
-              modal.style.display = 'none';
-          });
-
-          // Close modal when clicking outside
-          window.addEventListener('click', function(e) {
-              if (e.target === modal) {
-                  modal.style.display = 'none';
-              }
-          });
-
-          // Form submission
-          form.addEventListener('submit', async function(e) {
-              e.preventDefault();
-              
-              // Reset previous error messages
-              document.querySelectorAll('.form-error').forEach(el => el.style.display = 'none');
-              document.getElementById('successAlert').style.display = 'none';
-              document.getElementById('errorAlert').style.display = 'none';
-
-              // Show loading state
-              const button = form.querySelector('.submit-button');
-              const buttonText = button.querySelector('.button-text');
-              const buttonLoader = button.querySelector('.button-loader');
-              buttonText.style.display = 'none';
-              buttonLoader.style.display = 'inline-block';
-              button.disabled = true;
-
-              try {
-                  const formData = {
-                      name: document.getElementById('name').value,
-                      email: document.getElementById('email').value,
-                      phone: document.getElementById('phone').value,
-                      address: document.getElementById('address').value,
-                      program: document.getElementById('program').value,
-                      message: document.getElementById('message').value
-                  };
-
-                  const response = await fetch('http://localhost:5000/api/training/register', {
-                      method: 'POST',
-                      headers: {
-                          'Content-Type': 'application/json',
-                      },
-                      body: JSON.stringify(formData)
-                  });
-
-                  const data = await response.json();
-
-                  if (response.ok) {
-                      // Show success message
-                      const successAlert = document.getElementById('successAlert');
-                      successAlert.textContent = 'Registration successful! Redirecting to payment...';
-                      successAlert.style.display = 'block';
-                      
-                      // Redirect to payment page after a short delay
-                      setTimeout(() => {
-                          window.location.href = 'payment.html';
-                      }, 2000);
-                  } else {
-                      // Handle validation errors
-                      if (data.errors) {
-                          data.errors.forEach(error => {
-                              const errorElement = document.getElementById(`${error.param}Error`);
-                              if (errorElement) {
-                                  errorElement.textContent = error.msg;
-                                  errorElement.style.display = 'block';
-                              }
-                          });
-                      } else {
-                          // Show general error message
-                          const errorAlert = document.getElementById('errorAlert');
-                          errorAlert.textContent = data.error || 'Registration failed. Please try again.';
-                          errorAlert.style.display = 'block';
-                      }
-                  }
-              } catch (error) {
-                  console.error('Error:', error);
-                  // Show error message
-                  const errorAlert = document.getElementById('errorAlert');
-                  errorAlert.textContent = 'Failed to submit registration. Please try again later.';
-                  errorAlert.style.display = 'block';
-              } finally {
-                  // Reset button state
-                  buttonText.style.display = 'inline-block';
-                  buttonLoader.style.display = 'none';
-                  button.disabled = false;
-              }
-          });
-      });
-  </script>
-    <script src="script.js"></script>
-  </body>
-
+    <div class="footer-bottom">
+      <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
+    </div>
+  </footer>
+<script defer src="script.js?v=1.0"></script>
+<script defer src="optimization.js?v=1.0"></script>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <svg class="progress-ring" width="50" height="50">
+        <circle class="background" cx="25" cy="25" r="22.5"/>
+        <circle class="progress" cx="25" cy="25" r="22.5"/>
+    </svg>
+</div>
+</body>
 </html>

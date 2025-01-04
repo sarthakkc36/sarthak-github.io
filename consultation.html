@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<!-- Favicon and Icon Links -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#48825d">
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Kalpavriksha Education Foundation">
+    <meta name="description" content="Empowering schools and teachers with expert training, consultation, and child-focused educational resources.">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kalpaeducation.com">
+    <meta property="og:title" content="Kalpavriksha Education Foundation">
+    <meta property="og:description" content="Empowering schools and teachers with expert training, consultation, and child-focused educational resources.">
+    <meta property="og:image" content="https://kalpaeducation.com/images/android-chrome-512x512.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kalpaeducation.com">
+    <meta name="twitter:title" content="Kalpavriksha Education Foundation">
+    <meta name="twitter:description" content="Empowering schools and teachers with expert training, consultation, and child-focused educational resources.">
+    <meta name="twitter:image" content="https://kalpaeducation.com/images/android-chrome-512x512.png">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educational Consultation - Kalpavriksha Education Foundation</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="consultation-styles.css">
+<title>Educational Consultation - Kalpavriksha Education Foundation</title>
+    <link rel="stylesheet" href="styles.css?v=1.0?v=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="optimization.css">
+    <link rel="stylesheet" href="scroll-to-top.css">
 </head>
 <style>
     .alert {
@@ -38,23 +69,345 @@
         opacity: 0.7;
         cursor: not-allowed;
     }
+    .stats-section {
+    padding: 4rem 0;
+    background-color: #48825d;
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
+}
+
+.materials-section {
+    padding: 4rem 0;
+}
+
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.material-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.material-item:hover {
+    background-color: #e9ecef;
+}
+
+.material-item i {
+    font-size: 2rem;
+    color: #48825d;
+    margin-bottom: 1rem;
+}
+testimonials-section {
+    background-color: #f6f6e5;
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative elements */
+.testimonials-decor {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.decor-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.decor-circle-1 {
+    width: 300px;
+    height: 300px;
+    background: #48825d;
+    top: -150px;
+    left: -150px;
+}
+
+.decor-circle-2 {
+    width: 200px;
+    height: 200px;
+    background: #b8cec0;
+    bottom: -100px;
+    right: -100px;
+}
+
+.section-title {
+    text-align: center;
+    color: #48825d;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: Georgia, serif;
+    position: relative;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 4rem;
+}
+
+.testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.testimonials-track {
+    display: flex;
+    transition: transform 0.5s ease-out;
+}
+
+.testimonial-card {
+    flex: 0 0 100%;
+    padding: 0 1rem;
+}
+
+.testimonial-content {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-content:hover {
+    transform: translateY(-5px);
+}
+
+.quote-icon {
+    position: absolute;
+    font-size: 4rem;
+    color: #48825d;
+    opacity: 0.1;
+}
+
+.quote-left {
+    top: 20px;
+    left: 20px;
+}
+
+.quote-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #48825d;
+}
+
+.author-info h4 {
+    color: #48825d;
+    font-size: 1.2rem;
+    margin: 0 0 0.25rem 0;
+}
+
+.author-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.testimonial-rating {
+    color: #ffd700;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.navigation-arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    pointer-events: none;
+}
+
+.nav-arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #48825d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    opacity: 0.8;
+}
+
+.nav-arrow:hover {
+    background: #3a6b4a;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #b8cec0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #48825d;
+    transform: scale(1.3);
+}
+
+@media (max-width: 768px) {
+    .testimonials-section {
+        padding: 4rem 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .testimonial-content {
+        padding: 2rem;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+
+    .nav-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+/* First, add these styles to your CSS */
+.partner-slider {
+    max-width: 1900px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.partner-track {
+    display: flex;
+    gap: 2rem;
+    animation: slidePartners 60s linear infinite;
+    width: max-content;
+}
+
+@keyframes slidePartners {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);  /* Move by half the width */
+    }
+}
+
+.partner-slide {
+    flex: 0 0 200px;
+    padding: 1rem;
+}
+
+.partner-slide img {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.partner-slide img:hover {
+    transform: scale(1.1);
+}
+.testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden; /* Add this to prevent horizontal scroll */
+}
+
+.testimonials-track {
+    display: flex;
+    transition: transform 0.5s ease-out;
+    width: 100%; /* Ensure track is contained */
+}
+
+.testimonial-card {
+    flex: 0 0 100%; /* Each card takes full width */
+    width: 100%;
+    min-width: 100%; /* Ensure consistent sizing */
+}
 </style>
 <body>
     <!-- Header -->
     <header>
-        <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="Kalpavriksha Logo" />
+        <a href="/index" class="logo">
+            <img src="images/logo.webp" alt="Kalpavriksha Logo" width="auto" height="auto" />
         </a>
         
         <!-- Desktop Navigation -->
         <nav class="desktop-nav">
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="consultation.html" class="active">Consultation</a></li>
-                <li><a href="training.html">Training</a></li>
-                <li><a href="downloads.html">Downloads</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/consultation" class="active">Consultation</a></li>
+                <li><a href="/training">Training</a></li>
+                <li><a href="/Resources">Resources</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/gallery">Gallery</a></li>
             </ul>
         </nav>
 
@@ -68,12 +421,13 @@
         <!-- Mobile Menu -->
         <div class="mobile-menu">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="Consultation.html" class="active">Consultation</a></li>
-                <li><a href="training.html">Training</a></li>
-                <li><a href="downloads.html">Downloads</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/Consultation" class="active">Consultation</a></li>
+                <li><a href="/training">Training</a></li>
+                <li><a href="/Resources">Resources</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/gallery">Gallery</a></li>
             </ul>
         </div>
         <div class="menu-overlay"></div>
@@ -83,7 +437,7 @@
             <div class="info-slider">
                 <div class="info-slide">
                     <i class="fas fa-phone"></i>
-                    Call us: <a href="tel:+9779857876262">+977-9857876262</a>
+                     <a href="tel:01-4547300">01-4547300</a>
                 </div>
                 <div class="info-slide">
                     <i class="fas fa-envelope"></i>
@@ -91,11 +445,11 @@
                 </div>
                 <div class="info-slide">
                     <i class="far fa-clock"></i>
-                    Office Hour: 8:45am - 5:15pm
+                    Office Hour: 9am - 6pm
                 </div>
                 <div class="info-slide">
                     <i class="fas fa-map-marker-alt"></i>
-                    Kathmandu, Nepal
+                    Maharajgunj, Kathmandu, Nepal || Ghorahi, Dang, Nepal
                 </div>
             </div>
         </div>
@@ -107,66 +461,259 @@
             <p>Expert guidance for schools, teachers, and educational institutions</p>
         </div>
     </section>
-
-    <!-- Featured Program Section -->
-    <section class="featured-program">
-        <div class="container">
-            <div class="featured-card">
-                <div class="featured-badge">Featured Program</div>
-                <div class="featured-content">
-                    <h2>English Phonics Training</h2>
-                    <p class="featured-description">Complete phonics training program for educators</p>
-                    <div class="price-tag">Rs. 3,000 per participant</div>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i>7 Days Virtual Session</li>
-                        <li><i class="fas fa-check-circle"></i>Basic Phonics (6 days)</li>
-                        <li><i class="fas fa-check-circle"></i>42 sounds with activities</li>
-                        <li><i class="fas fa-check-circle"></i>Curriculum Guidelines</li>
-                        <li><i class="fas fa-check-circle"></i>Certification</li>
-                    </ul>
-                    <a href="#consultation-form" class="featured-button">Request Consultation</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Services Grid -->
     <section class="services-section">
         <div class="container">
             <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
+                <a href="school-consultation" style="text-decoration: none; color: inherit;">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-chalkboard-teacher"></i>
                     </div>
-                    <h3>Curriculum Design</h3>
-                    <p>Specialized guidance for pre-primary and primary level curriculum</p>
+                    <h3>School Consultation</h3>
+                    <p>School Consultation</p>
                 </div>
+                </a>
+                <a href="phonics" style="text-decoration: none; color: inherit;">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3>Teacher Training</h3>
-                    <p>Professional development and Montessori methodology</p>
+                    <h3>Phonics Consultation</h3>
+                    <p>Phonics Consultation</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-book-reader"></i>
+            </a>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials-section">
+        <div class="testimonials-decor">
+            <div class="decor-circle decor-circle-1"></div>
+            <div class="decor-circle decor-circle-2"></div>
+        </div>
+
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Hear from schools and educators we've worked with</p>
+
+        <div class="testimonials-container">
+            <div class="testimonials-track">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <span class="quote-icon quote-left">"</span>
+                        <p class="testimonial-text">
+                            As I have applied phonics based education from this year in our school, it is truly commendable! It has been easier for us to build a good environment for our children. It focuses on extra activities and more holistic education, helping in child development. The teaching system is very effective, and every course is beautiful.
+                        </p>
+                        <span class="quote-icon quote-right">"</span>
+                        <div class="testimonial-author">
+                            <img src="/images/happyHomes.webp" alt="Happy Homes" class="author-image"  width="60" height="60">
+                            <div class="author-info">
+                                <h4>Happy Homes</h4>
+                                <p>School Partner</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">★★★★★</div>
                     </div>
-                    <h3>Phonics Program</h3>
-                    <p>English and Nepali phonics teaching methodologies</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-users"></i>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <span class="quote-icon quote-left">"</span>
+                        <p class="testimonial-text">
+                            We are truly fortunate that our children have the opportunity to learn through modern methods. The focus on phonics has been particularly impactful, as they have improved significantly and are enthusiastic about learning. This approach provides skills that will benefit them in the long term.
+                        </p>
+                        <span class="quote-icon quote-right">"</span>
+                        <div class="testimonial-author">
+                            <img src="/images/bright kinderworld.webp" alt="Heera Thapa" class="author-image"  width="60" height="60">
+                            <div class="author-info">
+                                <h4>Heera Thapa</h4>
+                                <p>Founder Director, Bright Kinderworld</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">★★★★★</div>
                     </div>
-                    <h3>School Management</h3>
-                    <p>Administrative support and institutional development</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <span class="quote-icon quote-left">"</span>
+                        <p class="testimonial-text">
+                            It's truly an honour to write about my experience with the online training. It's not only about improving how to deal with students but also parents. It has improved my art and crafts skills and is more practical according to the context. Thank you to the entire team for helping us become better versions of ourselves.
+                        </p>
+                        <span class="quote-icon quote-right">"</span>
+                        <div class="testimonial-author">
+                            <img src="/images/maya-shrestha.webp" alt="Maya Shrestha" class="author-image"  width="60" height="60">
+                            <div class="author-info">
+                                <h4>Maya Shrestha</h4>
+                                <p>Teacher</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                </div>
+                 <!-- Testimonial 4 -->
+                 <div class="testimonial-card">
+                    <div class="testimonial-content">
+                      <span class="quote-icon quote-left">"</span>
+                      <p class="testimonial-text">
+                        Kalpavriksha has been a greatest support for our school.The curriculum has been designed with great
+                        effort,keeping in mind every small detail for the holistic development of a child.we are thankful for
+                        the ample resources provided story books,flash cards ,games and worksheets are appreciated as they are
+                        greatest aid for learning.The phonetic approach has brought a great change in children .Kalpavriksha has
+                        taught children to read way before they can write.The steps of learning listening speaking reading and
+                        writing has been 100 percent kept in mind while arranging the curriculum.All the four learners are
+                        benefited by this approach. The continuous support from Mrs Pratiksha Gautam is highly effective and
+                        appreciated. </p>
+                      <span class="quote-icon quote-right">"</span>
+                      <div class="testimonial-author">
+                        <img src="/images/creativeacademy.webp" alt="Happy Homes" class="author-image">
+                        <div class="author-info">
+                          <h4>Creative Academy</h4>
+                        </div>
+                      </div>
+                      <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                  </div>
+                <!-- Testimonial 5 -->
+          <!-- Testimonial 5 -->
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <span class="quote-icon quote-left">"</span>
+              <p class="testimonial-text">
+                It has been great pleasure learning from kalpavriksha Foundation. The changes in students after
+                collaborating with Kalpavrisha is amazing. We have been getting good responses from parents also.
+                Students are not only learning about the particular subject but also learning more about life skills. It
+                has helped students to build up their knowledge and confidence. It has also played a vital role in
+                teachers life. I am grateful to be a part of kalpavriksha foundation. Thank you. </p>
+              <span class="quote-icon quote-right">"</span>
+              <div class="testimonial-author">
+                <img src="/images/Pragatibudha.webp" alt="Happy Homes" class="author-image">
+                <div class="author-info">
+                  <h4>Pragati Budha</h4>
+                  <p>Teacher</p>
+                </div>
+              </div>
+              <div class="testimonial-rating">★★★★★</div>
+            </div>
+          </div>
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                      <span class="quote-icon quote-left">"</span>
+                      <p class="testimonial-text">
+                        As the Preschool Incharge of Nirmal Batika Academy, I am inspired to express my heartfelt appreciation
+                        for the remarkable influence of Kalpavrikshya Foundation on our educational journey. Their expert
+                        guidance has transformed our learning approach, instilling joy through engaging games and activities.
+                        The teacher training and classroom observations provided us with profound insights that have invigorated
+                        our practices. Additionally, the resources, including flashcards, story books, and life skills
+                        activities, have enriched our preschool program in meaningful ways. I wholeheartedly recommend
+                        Kalpavrikshya Foundation to any institution aspiring to elevate early education to new heights. </p>
+                      <span class="quote-icon quote-right">"</span>
+                      <div class="testimonial-author">
+                        <img src="/images/Pragatibudha.webp" alt="Happy Homes" class="author-image">
+                        <div class="author-info">
+                          <h4>Pragati Budha</h4>
+                          <p>Bodhisattva school,Pre school in charge
+                          </p>
+                        </div>
+                      </div>
+                      <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                  </div>
+            </div>
+            
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev-arrow">←</button>
+                <button class="nav-arrow next-arrow">→</button>
+            </div>
+
+            <div class="dots-container">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
+    <section class="partners-section" style="padding: 4rem 2rem; background: var(--white);">
+        <h2 style="text-align: center; color: #48825d; font-size: 2.5rem; margin-bottom: 3rem;">Organizations we have worked with</h2>
+        <div class="partner-slider" style="max-width: 1900px; margin: 0 auto; overflow: hidden; position: relative;">
+            <div class="partner-track" style="display: flex; gap: 2rem; animation: slidePartners 60s linear infinite;">
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/Apischool.webp" alt="Partner 1" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/Bodhisattva.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/bright kinderworld.webp" alt="Partner 3" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/cherry kids.webp" alt="Partner 4" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/children of kapan.webp" alt="Partner 5" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/creativeacademy.webp" alt="Partner 1" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/Dikshylaya.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/east horizon.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/gurukul.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/milestone.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/mothers pride.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/national blooming.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/nirmal batika.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/Radiant school.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/samriddhi.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/Saskar gurukul.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/Glowing Kids.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/International.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/Lyceum.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/Shemrock.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/trust and care.webp" alt="Partner 2" style="width: 150px; height: auto;">
+                </div>
+                <div class="partner-slide" style="flex: 0 0 200px;">
+                    <img src="/images/wonderland.webp" alt="Partner 2" style="width: 150px; height: auto;">
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Process Timeline -->
     <section class="process-section">
         <div class="container">
@@ -203,7 +750,7 @@
             </div>
         </div>
     </section>
-
+   
     <!-- Consultation Form -->
     <section id="consultation-form" class="form-section">
         <div class="container">
@@ -218,61 +765,59 @@
                         <li><i class="fas fa-check"></i>Regular Follow-up</li>
                     </ul>
                 </div>
-                <form class="consultation-form" id="consultationForm" onsubmit="handleConsultationSubmit(event)">
-                    <!-- Success/Error Messages -->
-                    <div id="successAlert" class="alert alert-success"></div>
-                    <div id="errorAlert" class="alert alert-error"></div>
-    
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
-                        <div class="form-error" id="nameError"></div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                        <div class="form-error" id="emailError"></div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" required>
-                        <div class="form-error" id="phoneError"></div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="institution">Institution Name</label>
-                        <input type="text" id="institution" name="institution">
-                        <div class="form-error" id="institutionError"></div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="consultationType">Consultation Type</label>
-                        <select id="consultationType" name="consultationType" required>
-                            <option value="">Select Consultation Type</option>
-                            <option value="curriculum">Curriculum Consultation</option>
-                            <option value="phonics">Phonics Program</option>
-                            <option value="montessori">Montessori Implementation</option>
-                            <option value="teacher-development">Teacher Development</option>
-                            <option value="administration">School Administration</option>
-                        </select>
-                        <div class="form-error" id="consultationTypeError"></div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="message">Additional Information</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
-                        <div class="form-error" id="messageError"></div>
-                    </div>
-    
-                    <button type="submit" class="submit-button">
-                        <span class="button-text">Request Consultation</span>
-                        <span class="button-loader" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </span>
-                    </button>
-                </form>
+                <!-- Replace your existing consultation form with this -->
+<form action="https://formspree.io/f/xjkvarnq" method="POST" class="consultation-form">
+    <div id="successAlert" class="alert alert-success" style="display: none;">
+        Your message has been sent successfully!
+    </div>
+    <div id="errorAlert" class="alert alert-error" style="display: none;">
+        There was an error sending your message. Please try again.
+    </div>
+
+    <div class="form-group">
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+        <div id="nameError" class="form-error"></div>
+    </div>
+
+    <div class="form-group">
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+        <div id="emailError" class="form-error"></div>
+    </div>
+
+    <div class="form-group">
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+        <div id="phoneError" class="form-error"></div>
+    </div>
+
+    <div class="form-group">
+        <input type="text" id="institution" name="institution" placeholder="Institution Name" required>
+        <div id="institutionError" class="form-error"></div>
+    </div>
+
+    <div class="form-group">
+        <select id="consultationType" name="consultationType" required>
+            <option value="">Select Consultation Type</option>
+            <option value="curriculum">Curriculum Consultation</option>
+            <option value="phonics">Phonics Program</option>
+            <option value="montessori">Montessori Implementation</option>
+            <option value="teacher">Teacher Development</option>
+            <option value="administration">School Administration</option>
+        </select>
+        <div id="consultationTypeError" class="form-error"></div>
+    </div>
+
+    <div class="form-group">
+        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+        <div id="messageError" class="form-error"></div>
+    </div>
+
+    <button type="submit" class="submit-button">
+        <span class="button-text">Request Consultation</span>
+        <span class="button-loader" style="display: none;">
+            <i class="fas fa-spinner fa-spin"></i>
+        </span>
+    </button>
+</form>
             </div>
         </div>
     </section>
@@ -302,15 +847,15 @@
                 <div class="contact-info">
                     <i class="fas fa-envelope"></i>
                     <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
-                    <p><i class="fas fa-phone"></i>+977 9857876262 | 9840056656</p>
+                    <p><i class="fas fa-phone"></i>+977 9851364262 | 9840056656</p>
                 </div>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="training.html">Our Trainings</a></li>
-                    <li><a href="downloads.html">Downloads</a></li>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/training">Our Trainings</a></li>
+                    <li><a href="/Resources">Resources</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -325,108 +870,183 @@
             <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
         </div>
     </footer>
-    <script>
-     async function handleConsultationSubmit(event) {
-        event.preventDefault();
-        
-        // Reset previous error messages
-        document.querySelectorAll('.form-error').forEach(el => el.style.display = 'none');
-        document.getElementById('successAlert').style.display = 'none';
-        document.getElementById('errorAlert').style.display = 'none';
 
-        // Show loading state
-        const button = event.target.querySelector('.submit-button');
-        const buttonText = button.querySelector('.button-text');
-        const buttonLoader = button.querySelector('.button-loader');
-        buttonText.style.display = 'none';
-        buttonLoader.style.display = 'inline-block';
-        button.disabled = true;
+    <script defer src="script.js?v=1.0"></script>
+    <script defer src="optimization.js?v=1.0"></script>
+<!-- Back to Top Button -->
+<div class="back-to-top" role="button" aria-label="Back to top">
+    <svg class="progress-ring" width="50" height="50">
+        <circle class="background" cx="25" cy="25" r="22.5"/>
+        <circle class="progress" cx="25" cy="25" r="22.5"/>
+    </svg>
+</div>
+<script>document.addEventListener('DOMContentLoaded', function() {
+    // Initialize slideshow
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.bg-image');
+    const dots = document.querySelectorAll('.bg-dot');
+    const totalSlides = slides.length;
+    let slideInterval;
 
-        try {
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                institution: document.getElementById('institution').value,
-                consultationType: document.getElementById('consultationType').value,
-                message: document.getElementById('message').value
-            };
+    // Function to show a specific slide
+    function showSlide(index) {
+        // Remove active class from all slides and dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
 
-            // Using localhost URL
-            const response = await fetch('http://localhost:5000/api/consultation', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                // Show success message
-                const successAlert = document.getElementById('successAlert');
-                successAlert.textContent = 'Consultation request sent successfully! We will contact you soon.';
-                successAlert.style.display = 'block';
-                
-                // Scroll to success message
-                successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                // Clear form
-                event.target.reset();
-
-                // Optionally hide success message after some time
-                setTimeout(() => {
-                    successAlert.style.display = 'none';
-                }, 5000); // Hide after 5 seconds
-            } else {
-                // Handle validation errors
-                if (data.errors) {
-                    data.errors.forEach(error => {
-                        const errorElement = document.getElementById(`${error.param}Error`);
-                        if (errorElement) {
-                            errorElement.textContent = error.msg;
-                            errorElement.style.display = 'block';
-                        }
-                    });
-                } else {
-                    // Show general error message
-                    const errorAlert = document.getElementById('errorAlert');
-                    errorAlert.textContent = data.error || 'Something went wrong! Please try again.';
-                    errorAlert.style.display = 'block';
-                    errorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            // Show error message
-            const errorAlert = document.getElementById('errorAlert');
-            errorAlert.textContent = 'Failed to send consultation request. Please try again later.';
-            errorAlert.style.display = 'block';
-            errorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } finally {
-            // Reset button state
-            buttonText.style.display = 'inline-block';
-            buttonLoader.style.display = 'none';
-            button.disabled = false;
-        }
+        // Add active class to current slide and dot
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentSlide = index;
     }
 
-    // Smooth scroll for the "Request Consultation" button
-    document.addEventListener('DOMContentLoaded', function() {
-        const consultButton = document.querySelector('.featured-button');
-        if (consultButton) {
-            consultButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                const formSection = document.getElementById('consultation-form');
-                if (formSection) {
-                    formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        }
+    // Function to advance to next slide
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    // Start automatic slideshow
+    function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
+
+    // Stop automatic slideshow
+    function stopSlideshow() {
+        clearInterval(slideInterval);
+    }
+
+    // Add click handlers to dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            stopSlideshow();
+            startSlideshow(); // Restart the interval
+        });
     });
-    </script>    
-    <script src="script.js"></script>
+
+    // Add fade transition to slides
+    slides.forEach(slide => {
+        slide.style.transition = 'opacity 1s ease-in-out';
+    });
+
+    // Initialize slideshow
+    showSlide(0);
+    startSlideshow();
+
+    // Optional: Pause slideshow on hover
+    const heroSection = document.querySelector('.hero-section-fullscreen');
+    heroSection.addEventListener('mouseenter', stopSlideshow);
+    heroSection.addEventListener('mouseleave', startSlideshow);
+});</script>
+<script>//Testimonials Slider
+    document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.testimonials-track');
+        const slides = document.querySelectorAll('.testimonial-card');
+        const dots = document.querySelectorAll('.dot');
+        const prevButton = document.querySelector('.prev-arrow');
+        const nextButton = document.querySelector('.next-arrow');
+        
+        let currentSlide = 0;
+        let slideInterval;
+        const slideDelay = 12000; // 12 seconds between automatic slides
+    
+        // Initialize slider
+        function initSlider() {
+            // Set initial positions
+            updateSlidePosition();
+            // Start automatic slideshow
+            startSlideShow();
+        }
+    
+        // Update slide position
+        function updateSlidePosition() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        }
+    
+        // Next slide function
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlidePosition();
+        }
+    
+        // Previous slide function
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlidePosition();
+        }
+    
+        // Start automatic slideshow
+        function startSlideShow() {
+            stopSlideShow(); // Clear any existing interval
+            slideInterval = setInterval(nextSlide, slideDelay);
+        }
+    
+        // Stop automatic slideshow
+        function stopSlideShow() {
+            if (slideInterval) {
+                clearInterval(slideInterval);
+            }
+        }
+    
+        // Event Listeners
+        prevButton.addEventListener('click', () => {
+            prevSlide();
+            stopSlideShow();
+            startSlideShow(); // Reset the interval
+        });
+    
+        nextButton.addEventListener('click', () => {
+            nextSlide();
+            stopSlideShow();
+            startSlideShow(); // Reset the interval
+        });
+    
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlidePosition();
+                stopSlideShow();
+                startSlideShow(); // Reset the interval
+            });
+        });
+    
+        // Pause on hover
+        track.addEventListener('mouseenter', stopSlideShow);
+        track.addEventListener('mouseleave', startSlideShow);
+    
+        // Touch events for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+    
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            stopSlideShow();
+        });
+    
+        track.addEventListener('touchmove', (e) => {
+            touchEndX = e.touches[0].clientX;
+        });
+    
+        track.addEventListener('touchend', () => {
+            const difference = touchStartX - touchEndX;
+            if (Math.abs(difference) > 50) { // Minimum swipe distance
+                if (difference > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+            startSlideShow();
+        });
+    
+        // Initialize the slider
+        initSlider();
+    });</script>
 </body>
 </html>

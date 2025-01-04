@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Favicon and Icon Links -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#48825d">
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Kalpavriksha Education Foundation">
+    <meta name="description" content="Empowering schools and teachers with expert training, consultation, and child-focused educational resources.">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kalpaeducation.com">
+    <meta property="og:title" content="Kalpavriksha Education Foundation">
+    <meta property="og:description" content="Empowering schools and teachers with expert training, consultation, and child-focused educational resources.">
+    <meta property="og:image" content="https://kalpaeducation.com/images/android-chrome-512x512.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kalpaeducation.com">
+    <meta name="twitter:title" content="Kalpavriksha Education Foundation">
+    <meta name="twitter:description" content="Empowering schools and teachers with expert training, consultation, and child-focused educational resources.">
+    <meta name="twitter:image" content="https://kalpaeducation.com/images/android-chrome-512x512.png">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Resources - Kalpavriksha Education Foundation</title>
+    <link rel="stylesheet" href="styles.css?v=1.0?v=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .resource-categories {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .category-section {
+            margin-bottom: 4rem;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-title {
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary);
+            font-size: 1.8rem;
+        }
+
+        .category-title i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        .resources-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .resource-item {
+            background: var(--background);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-details {
+            flex: 1;
+        }
+
+        .resource-details h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .resource-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .resource-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .download-button {
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .download-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .download-button i {
+            font-size: 1.1rem;
+        }
+
+        /* Premium Resources Section */
+        .premium-resources {
+            background: var(--background);
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+
+        .premium-banner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .premium-content h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .premium-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .premium-features li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .premium-features i {
+            color: var(--primary);
+        }
+
+        .premium-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .premium-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .premium-banner {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .premium-features {
+                display: inline-block;
+                text-align: left;
+            }
+
+            .resource-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .resource-meta {
+                justify-content: center;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="optimization.css">
+    <link rel="stylesheet" href="scroll-to-top.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="/index" class="logo">
+            <img src="images/logo.webp" alt="Kalpavriksha Logo" width="auto" height="auto" />
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <ul class="nav-links">
+                <li><a href="/index">Home</a></li>
+                <li><a href="/consultation">Consultation</a></li>
+                <li><a href="/training">Training</a></li>
+                <li><a href="/Resources" class="active">Resources</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+            </ul>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/consultation">Consultation</a></li>
+                <li><a href="/training">Training</a></li>
+                <li><a href="/Resources" class="active">Resources</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+            </ul>
+        </div>
+        <div class="menu-overlay"></div>
+    </header>
+    <div class="top-info-bar">
+        <div class="container">
+            <div class="info-slider">
+                <div class="info-slide">
+                    <i class="fas fa-phone"></i>
+                     <a href="tel:01-4547300">01-4547300</a>
+                </div>
+                <div class="info-slide">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
+                </div>
+                <div class="info-slide">
+                    <i class="far fa-clock"></i>
+                    Office Hour: 9am - 6pm
+                </div>
+                <div class="info-slide">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Maharajgunj, Kathmandu, Nepal || Ghorahi, Dang, Nepal
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Educational Resources</h1>
+            <p>Access our comprehensive collection of teaching materials and learning resources</p>
+        </div>
+    </section>
+
+    <!-- Resource Categories -->
+    <section class="resource-categories">
+        <!-- Teaching Resources -->
+        <div class="category-section">
+            <h3 class="category-title">
+                <i class="fas fa-book"></i>
+                Teaching Resources
+            </h3>
+            <div class="resources-list">
+                <div class="resource-item">
+                    <div class="resource-details">
+                        <h4>Complete Phonics Teaching Guide</h4>
+                        <p>A comprehensive guide for teaching 42 phonics sounds with interactive activities</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-file-pdf"></i> PDF</span>
+                            <span><i class="fas fa-download"></i> 245 Resources</span>
+                        </div>
+                    </div>
+                    <button class="download-button" onclick="simulateDownload(this)">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <div class="resource-item">
+                    <div class="resource-details">
+                        <h4>Parent-Teacher Communication Guide</h4>
+                        <p>Guidelines and templates for effective parent-teacher collaboration</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-file-pdf"></i> PDF</span>
+                            <span><i class="fas fa-download"></i> 189 Resources</span>
+                        </div>
+                    </div>
+                    <button class="download-button" onclick="simulateDownload(this)">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Resources -->
+        <div class="category-section">
+            <h3 class="category-title">
+                <i class="fas fa-paint-brush"></i>
+                Activity Resources
+            </h3>
+            <div class="resources-list">
+                <div class="resource-item">
+                    <div class="resource-details">
+                        <h4>Educational Wall Displays</h4>
+                        <p>Printable classroom displays for phonics and vocabulary</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-file-pdf"></i> PDF</span>
+                            <span><i class="fas fa-download"></i> 312 Resources</span>
+                        </div>
+                    </div>
+                    <button class="download-button" onclick="simulateDownload(this)">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <div class="resource-item">
+                    <div class="resource-details">
+                        <h4>Interactive Learning Worksheets</h4>
+                        <p>Age-appropriate worksheets and activities for students</p>
+                        <div class="resource-meta">
+                            <span><i class="fas fa-file-pdf"></i> PDF</span>
+                            <span><i class="fas fa-download"></i> 276 Resources</span>
+                        </div>
+                    </div>
+                    <button class="download-button" onclick="simulateDownload(this)">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+<!-- Teaching Tools -->
+<div class="category-section">
+    <h3 class="category-title">
+        <i class="fas fa-tools"></i>
+        Teaching Tools
+    </h3>
+    <div class="resources-list">
+        <div class="resource-item">
+            <div class="resource-details">
+                <h4>Teacher's Assessment Package</h4>
+                <p>Comprehensive assessment templates and progress tracking tools</p>
+                <div class="resource-meta">
+                    <span><i class="fas fa-file-excel"></i> XLS</span>
+                    <span><i class="fas fa-download"></i> 167 Resources</span>
+                </div>
+            </div>
+            <button class="download-button" onclick="simulateDownload(this)">
+                <i class="fas fa-download"></i> Download
+            </button>
+        </div>
+
+        <div class="resource-item">
+            <div class="resource-details">
+                <h4>Phonics Word Bank</h4>
+                <p>Comprehensive word lists organized by phonetic sounds</p>
+                <div class="resource-meta">
+                    <span><i class="fas fa-file-word"></i> DOC</span>
+                    <span><i class="fas fa-download"></i> 234 Resources</span>
+                </div>
+            </div>
+            <button class="download-button" onclick="simulateDownload(this)">
+                <i class="fas fa-download"></i> Download
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Creative Resources -->
+<div class="category-section">
+    <h3 class="category-title">
+        <i class="fas fa-theater-masks"></i>
+        Creative Learning Materials
+    </h3>
+    <div class="resources-list">
+        <div class="resource-item">
+            <div class="resource-details">
+                <h4>Interactive Learning Materials</h4>
+                <p>Printable puppets and visual aids for storytelling</p>
+                <div class="resource-meta">
+                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                    <span><i class="fas fa-download"></i> 198 Resources</span>
+                </div>
+            </div>
+            <button class="download-button" onclick="simulateDownload(this)">
+                <i class="fas fa-download"></i> Download
+            </button>
+        </div>
+
+        <div class="resource-item">
+            <div class="resource-details">
+                <h4>Action-Based Learning Activities</h4>
+                <p>Physical activities and movement-based learning resources</p>
+                <div class="resource-meta">
+                    <span><i class="fas fa-file-pdf"></i> PDF</span>
+                    <span><i class="fas fa-download"></i> 156 Resources</span>
+                </div>
+            </div>
+            <button class="download-button" onclick="simulateDownload(this)">
+                <i class="fas fa-download"></i> Download
+            </button>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Premium Resources Banner -->
+<section class="premium-resources">
+<div class="container">
+    <div class="premium-banner">
+        <div class="premium-content">
+            <h3>Access Premium Resources</h3>
+            <p>Join our training programs to unlock our complete library of premium teaching materials</p>
+            <ul class="premium-features">
+                <li><i class="fas fa-check"></i> Comprehensive lesson plans for English Phonics</li>
+                <li><i class="fas fa-check"></i> Advanced assessment and tracking tools</li>
+                <li><i class="fas fa-check"></i> Interactive teaching materials</li>
+                <li><i class="fas fa-check"></i> Monthly resource updates</li>
+                <li><i class="fas fa-check"></i> Priority support from our team</li>
+            </ul>
+            <a href="/training" class="premium-button">View Training Programs</a>
+        </div>
+        <div class="premium-image">
+            <img src="images/premium.webp" alt="Premium Resources" loading="lazy" width="auto" height="auto" class="rounded-lg shadow-lg">
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+<div class="footer-content">
+    <div class="footer-section">
+        <h3>Contact Us</h3>
+        <div class="footer-map">
+            <iframe 
+                id="footer-map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.36972741325!2d85.33915669999999!3d27.736739999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19004faf0233%3A0xdbc2d75753d59dd5!2sKalpavriksha%20Education%20Foundation!5e0!3m2!1sen!2snp!4v1731578433006!5m2!1sen!2snp"
+                width="100%" 
+                height="200" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <a href="https://maps.app.goo.gl/7YBEzH2ifte2T4P46" 
+            class="footer-directions-button" 
+            target="_blank">
+                <i class="fas fa-directions"></i> Get Directions
+            </a>
+        </div>
+        <div class="contact-info">
+            <p>
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:kalpavriksha.efn@gmail.com">kalpavriksha.efn@gmail.com</a>
+            </p>
+            <p>
+                <i class="fas fa-phone"></i>
+                <span>+977 9851364262 | 9840056656</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+            <li><a href="/index">Home</a></li>
+            <li><a href="/training">Our Trainings</a></li>
+            <li><a href="/Resources">Resources</a></li>
+        </ul>
+    </div>
+
+    <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+            <a href="https://www.facebook.com/kalpavrikshaeducation"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@kalpaedu"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="footer-bottom">
+    <p>&copy; 2024 Kalpavriksha Education Foundation. All rights reserved.</p>
+</div>
+</footer>
+<script defer src="script.js?v=1.0"></script>
+<script defer src="optimization.js?v=1.0"></script>
+<!-- Back to Top Button -->
+<div class="back-to-top" role="button" aria-label="Back to top">
+    <svg class="progress-ring" width="50" height="50">
+        <circle class="background" cx="25" cy="25" r="22.5"/>
+        <circle class="progress" cx="25" cy="25" r="22.5"/>
+    </svg>
+</div>
+</body>
+</html>
